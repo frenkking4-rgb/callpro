@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="az" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CallPro AZ xidmətləri — daxil olan zənglər, çıxan zənglər, texniki dəstək, CRM inteqrasiyası, analitika."/>
+  <title>Xidmətlər — CallPro AZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+  <style>
+    /* ── Service Detail Cards ── */
+    .svc-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .svc-detail--reverse { direction: rtl; }
+    .svc-detail--reverse > * { direction: ltr; }
+    .svc-detail__visual {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svc-detail__icon-big {
+      font-size: clamp(3rem, 8vw, 6rem);
+      filter: drop-shadow(0 0 40px rgba(0,212,255,0.3));
+      animation: iconFloat 4s ease-in-out infinite;
+    }
+    @keyframes iconFloat {
+      0%,100%{ transform: translateY(0) scale(1); }
+      50%    { transform: translateY(-12px) scale(1.05); }
+    }
+    .svc-detail__glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,212,255,0.08) 0%, transparent 70%);
+    }
+    .svc-detail__dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .svc-features-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .svc-feat {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      transition: all var(--dur-fast) var(--ease);
+    }
+    .svc-feat:hover { border-color: rgba(0,212,255,0.25); transform: translateX(4px); }
+    .svc-feat-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* ── Capability Chips ── */
+    .cap-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .cap-chip {
+      padding: 8px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      transition: all var(--dur-fast);
+      font-family: var(--font-mono);
+    }
+    .cap-chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,212,255,0.06); }
+
+    /* ── Integration logos ── */
+    .integrations-strip {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      align-items: center; justify-content: center;
+      padding: 48px 0;
+    }
+    .int-badge {
+      padding: 12px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.875rem;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      transition: all var(--dur-fast);
+    }
+    .int-badge:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1023px) {
+      .svc-detail { grid-template-columns: 1fr; }
+      .svc-detail--reverse { direction: ltr; }
+    }
+    @media (max-width: 639px) {
+      .svc-detail__visual { aspect-ratio: 3/2; }
+    }
+  </style>
+</head>
+<body>
+<div class="loading-screen">
+  <div class="loading-logo">
+    <div class="loading-mark">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="13" r="7" stroke="white" stroke-width="2.5"/>
+        <circle cx="23" cy="24" r="3" fill="white"/>
+      </svg>
+    </div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+<div class="cursor-glow"></div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark"></div>
+        <span class="nav__logo-text">Call<span>Pro</span> AZ</span>
+      </a>
+      <ul class="nav__menu">
+        <li><a href="index.html"    class="nav__link" data-i18n="nav_home">Ana Səhifə</a></li>
+        <li><a href="services.html" class="nav__link" data-i18n="nav_services">Xidmətlər</a></li>
+        <li><a href="about.html"    class="nav__link" data-i18n="nav_about">Haqqımızda</a></li>
+        <li><a href="pricing.html"  class="nav__link" data-i18n="nav_pricing">Qiymətlər</a></li>
+        <li><a href="contact.html"  class="nav__link" data-i18n="nav_contact">Əlaqə</a></li>
+      </ul>
+      <div class="nav__controls">
+        <div class="lang-selector">
+          <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="lang-dropdown">
+            <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+            <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+            <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+          </div>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="contact.html" class="btn btn-primary btn-sm nav__cta" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav__progress"></div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html"    class="nav__mobile-link" data-i18n="nav_home">Ana Səhifə <span>→</span></a>
+  <a href="services.html" class="nav__mobile-link" data-i18n="nav_services">Xidmətlər <span>→</span></a>
+  <a href="about.html"    class="nav__mobile-link" data-i18n="nav_about">Haqqımızda <span>→</span></a>
+  <a href="pricing.html"  class="nav__mobile-link" data-i18n="nav_pricing">Qiymətlər <span>→</span></a>
+  <a href="contact.html"  class="nav__mobile-link" data-i18n="nav_contact">Əlaqə <span>→</span></a>
+  <div class="nav__mobile-controls">
+    <div class="lang-selector">
+      <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lang-dropdown">
+        <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+        <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+        <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+      </div>
+    </div>
+    <button class="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg></button>
+    <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center" data-i18n="nav_cta">Konsultasiya</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="hero__grid"></div>
+  <div class="container page-hero__content">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav_home">Ana Səhifə</a>
+      <span>›</span>
+      <span data-i18n="nav_services">Xidmətlər</span>
+    </div>
+    <span class="label reveal" style="color:rgba(0,212,255,0.8)" data-i18n="svc_label">Xidmətlərimiz</span>
+    <h1 class="display-lg reveal stagger-1" style="color:#fff;margin:16px 0" data-i18n="svc_title">Biznesiniz üçün Tam Həll</h1>
+    <p class="reveal stagger-2" data-i18n="svc_desc">Hər ölçüdə bizneslər üçün nəzərdə tutulmuş peşəkar kol mərkəzi xidmətləri.</p>
+  </div>
+</section>
+
+<!-- SERVICE 1: INBOUND -->
+<section class="section">
+  <div class="container">
+    <div class="svc-detail">
+      <div class="svc-detail__visual reveal-left">
+        <div class="svc-detail__dots"></div>
+        <div class="svc-detail__glow"></div>
+        <div class="svc-detail__icon-big">📞</div>
+      </div>
+      <div class="reveal-right">
+        <span class="label" data-i18n="svc_label">Xidmət 01</span>
+        <h2 class="display-sm" style="margin:16px 0 12px" data-i18n="svc_1_title">Daxil olan Zənglər</h2>
+        <p style="color:var(--text-secondary);line-height:1.7" data-i18n="svc_1_desc">Müştəri sorğularını peşəkar şəkildə idarə edirik. Hər zəng vaxtında cavablanır.</p>
+        <p style="color:var(--text-secondary);line-height:1.7;margin-top:12px">Müştəriləriniz sizinlə əlaqə saxladıqda, sertifikatlı operatorlarımız onları peşəkar şəkildə qarşılayır, suallarını həll edir, lazım olduqda müvafiq şöbəyə yönləndirir.</p>
+        <ul class="svc-features-list">
+          <li class="svc-feat"><span class="svc-feat-icon">⚡</span>Ortalama 8 saniyə cavab vaxtı</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🎯</span>İlk zənglə həll dərəcəsi 94%</li>
+          <li class="svc-feat"><span class="svc-feat-icon">📊</span>Real vaxt dashboard monitorinqi</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🔄</span>IVR (avtomatik cavab) sistemi</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🎙</span>Bütün zənglərin qeydiyyatı</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:28px" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2: OUTBOUND -->
+<section class="section" style="background:var(--bg-card)">
+  <div class="container">
+    <div class="svc-detail svc-detail--reverse">
+      <div class="svc-detail__visual reveal-right">
+        <div class="svc-detail__dots"></div>
+        <div class="svc-detail__glow" style="background:radial-gradient(circle at center,rgba(123,47,255,0.1) 0%,transparent 70%)"></div>
+        <div class="svc-detail__icon-big">📤</div>
+      </div>
+      <div class="reveal-left">
+        <span class="label">Xidmət 02</span>
+        <h2 class="display-sm" style="margin:16px 0 12px" data-i18n="svc_2_title">Çıxan Zənglər</h2>
+        <p style="color:var(--text-secondary);line-height:1.7" data-i18n="svc_2_desc">Satış kampaniyaları, anketzlər və müştəri əlaqəsi üçün effektiv çıxan zəng xidməti.</p>
+        <p style="color:var(--text-secondary);line-height:1.7;margin-top:12px">Hazır satış skriptləri, avtomatik zəng planlaması və detallı nəticə hesabatları ilə satış komandanızın effektivliyini kəskin artırın.</p>
+        <ul class="svc-features-list">
+          <li class="svc-feat"><span class="svc-feat-icon">📋</span>Xüsusi hazırlanmış satış skriptləri</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🤖</span>Avtomatik zəng sıralama sistemi</li>
+          <li class="svc-feat"><span class="svc-feat-icon">📈</span>A/B testləri ilə konversiya artımı</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🗓</span>Optimal vaxt planlaması</li>
+          <li class="svc-feat"><span class="svc-feat-icon">📑</span>Detallı kampaniya hesabatları</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:28px" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 3: TECH SUPPORT -->
+<section class="section">
+  <div class="container">
+    <div class="svc-detail">
+      <div class="svc-detail__visual reveal-left">
+        <div class="svc-detail__dots"></div>
+        <div class="svc-detail__glow" style="background:radial-gradient(circle at center,rgba(255,61,107,0.1) 0%,transparent 70%)"></div>
+        <div class="svc-detail__icon-big">🛠</div>
+      </div>
+      <div class="reveal-right">
+        <span class="label">Xidmət 03</span>
+        <h2 class="display-sm" style="margin:16px 0 12px" data-i18n="svc_3_title">Texniki Dəstək</h2>
+        <p style="color:var(--text-secondary);line-height:1.7" data-i18n="svc_3_desc">Müştərilərinizin texniki problemlərini peşəkar mütəxəssislərimiz həll edir.</p>
+        <p style="color:var(--text-secondary);line-height:1.7;margin-top:12px">Tier 1, Tier 2 və Tier 3 texniki dəstək səviyyələrini təmin edirik. Mürəkkəb texniki problemlər mütəxəssis komandamıza yönləndirilir.</p>
+        <ul class="svc-features-list">
+          <li class="svc-feat"><span class="svc-feat-icon">🔧</span>3 səviyyəli texniki dəstək (Tier 1-2-3)</li>
+          <li class="svc-feat"><span class="svc-feat-icon">⏱</span>SLA ilə zəmanətli həll müddəti</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🎫</span>Bilet idarəetmə sistemi</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🖥</span>Uzaqdan masaüstü dəstək</li>
+          <li class="svc-feat"><span class="svc-feat-icon">📚</span>Bilgi bazası yaradılması</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:28px" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 4: CRM -->
+<section class="section" style="background:var(--bg-card)">
+  <div class="container">
+    <div class="svc-detail svc-detail--reverse">
+      <div class="svc-detail__visual reveal-right">
+        <div class="svc-detail__dots"></div>
+        <div class="svc-detail__glow" style="background:radial-gradient(circle at center,rgba(34,197,94,0.1) 0%,transparent 70%)"></div>
+        <div class="svc-detail__icon-big">🔗</div>
+      </div>
+      <div class="reveal-left">
+        <span class="label">Xidmət 04</span>
+        <h2 class="display-sm" style="margin:16px 0 12px" data-i18n="svc_4_title">CRM İnteqrasiyası</h2>
+        <p style="color:var(--text-secondary);line-height:1.7" data-i18n="svc_4_desc">Mövcud CRM sistemlərinizlə tam inteqrasiya. Bütün məlumatlar sinxronlaşdırılır.</p>
+        <p style="color:var(--text-secondary);line-height:1.7;margin-top:12px">Müştəri məlumatları real vaxtda CRM-ə yazılır. Operatorlarımız zəng zamanı müştərinin tam tarixçəsini görür.</p>
+        <div class="integrations-strip" style="justify-content:flex-start;padding:24px 0">
+          <div class="int-badge">Salesforce</div>
+          <div class="int-badge">Bitrix24</div>
+          <div class="int-badge">HubSpot</div>
+          <div class="int-badge">AmoCRM</div>
+          <div class="int-badge">Zoho CRM</div>
+          <div class="int-badge">Pipedrive</div>
+        </div>
+        <ul class="svc-features-list">
+          <li class="svc-feat"><span class="svc-feat-icon">🔄</span>İki istiqamətli real vaxt sinxronizasiya</li>
+          <li class="svc-feat"><span class="svc-feat-icon">📊</span>Avtomatik lead yaradılması</li>
+          <li class="svc-feat"><span class="svc-feat-icon">🏷</span>Zəng teqləmə və kateqoriyalaşdırma</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:28px" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 5: ANALYTICS -->
+<section class="section">
+  <div class="container">
+    <div class="svc-detail">
+      <div class="svc-detail__visual reveal-left">
+        <div class="svc-detail__dots"></div>
+        <div class="svc-detail__glow" style="background:radial-gradient(circle at center,rgba(251,146,60,0.1) 0%,transparent 70%)"></div>
+        <div class="svc-detail__icon-big">📊</div>
+      </div>
+      <div class="reveal-right">
+        <span class="label">Xidmət 05</span>
+        <h2 class="display-sm" style="margin:16px 0 12px" data-i18n="svc_6_title">Analitika & Hesabat</h2>
+        <p style="color:var(--text-secondary);line-height:1.7" data-i18n="svc_6_desc">Real vaxt hesabatları, zəng analitikası və performans monitorinqi.</p>
+        <p style="color:var(--text-secondary);line-height:1.7;margin-top:12px">Hər zəngin analizi, operator performansı, pik saatlar, müştəri məmnuniyyəti skoru — hamısı bir dashboardda.</p>
+        <div class="cap-grid">
+          <div class="cap-chip">Real Vaxt KPI</div>
+          <div class="cap-chip">Operator Reytinqi</div>
+          <div class="cap-chip">Saatlıq Hesabat</div>
+          <div class="cap-chip">NPS Ölçümü</div>
+          <div class="cap-chip">Trend Analizi</div>
+          <div class="cap-chip">Export PDF/XLS</div>
+        </div>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:28px" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="container cta-section__content">
+    <span class="label reveal" style="color:rgba(0,212,255,0.8)">Hazırsınız?</span>
+    <h2 class="display-md reveal stagger-1" data-i18n="cta_title">Biznesinizi Növbəti Səviyyəyə Çıxarın</h2>
+    <p class="reveal stagger-2" data-i18n="cta_desc">Pulsuz konsultasiya alın, 30 günlük sınaq müddəti ilə başlayın.</p>
+    <div class="cta-actions reveal stagger-3">
+      <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="cta_btn1">Pulsuz Başlayın</a>
+      <a href="pricing.html" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff" data-i18n="nav_pricing">Qiymətlər</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="nav__logo"><div class="nav__logo-mark"></div><span class="nav__logo-text" style="color:#fff">Call<span>Pro</span> AZ</span></a>
+        <p class="footer__brand-desc" data-i18n="footer_desc">Azərbaycanın aparıcı kol mərkəzi xidmətleri. 7/24 peşəkar dəstək.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social">in</a><a href="#" class="footer__social">f</a><a href="#" class="footer__social">📷</a><a href="#" class="footer__social">✈</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col1">Xidmətlər</div>
+        <ul class="footer__links">
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l1">Daxil olan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l2">Çıxan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l3">Texniki Dəstək</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l4">CRM İnteqrasiya</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l5">Analitika</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col2">Şirkət</div>
+        <ul class="footer__links">
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m1">Haqqımızda</a></li>
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m2">Komanda</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m3">Karyera</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m4">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col3">Dəstək</div>
+        <ul class="footer__links">
+          <li><a href="contact.html" class="footer__link" data-i18n="nav_contact">Əlaqə</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n4">Siyasət</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n5">Şərtlər</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copyright" data-i18n="footer_copy">© 2025 CallPro AZ. Bütün hüquqlar qorunur.</span>
+      <div class="footer__legal">
+        <a href="#" data-i18n="footer_priv">Məxfilik</a>
+        <a href="#" data-i18n="footer_terms">Şərtlər</a>
+        <a href="#" data-i18n="footer_cookies">Kukilər</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies-banner">
+  <p data-i18n="cookie_text">Saytımız təcrübənizi yaxşılaşdırmaq üçün kukilər istifadə edir.</p>
+  <div class="cookies-actions">
+    <button class="btn btn-sm btn-ghost cookie-decline" data-i18n="cookie_decline">İmtina et</button>
+    <button class="btn btn-sm btn-primary cookie-accept" data-i18n="cookie_accept">Qəbul et</button>
+  </div>
+</div>
+<button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<script src="js/translations.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

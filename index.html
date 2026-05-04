@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="az" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CallPro AZ — Azərbaycanın aparıcı kol mərkəzi. 7/24 peşəkar müştəri xidməti, satış dəstəyi, texniki yardım."/>
+  <title>CallPro AZ — Peşəkar Kol Mərkəzi Xidmətləri</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loading-screen">
+  <div class="loading-logo">
+    <div class="loading-mark">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="13" r="7" stroke="white" stroke-width="2.5"/>
+        <circle cx="23" cy="24" r="3" fill="white"/>
+      </svg>
+    </div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Cursor Glow -->
+<div class="cursor-glow"></div>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="container" style="padding-top: 12px;">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark"></div>
+        <span class="nav__logo-text">Call<span>Pro</span> AZ</span>
+      </a>
+      <ul class="nav__menu">
+        <li><a href="index.html"    class="nav__link" data-i18n="nav_home">Ana Səhifə</a></li>
+        <li><a href="services.html" class="nav__link" data-i18n="nav_services">Xidmətlər</a></li>
+        <li><a href="about.html"    class="nav__link" data-i18n="nav_about">Haqqımızda</a></li>
+        <li><a href="pricing.html"  class="nav__link" data-i18n="nav_pricing">Qiymətlər</a></li>
+        <li><a href="contact.html"  class="nav__link" data-i18n="nav_contact">Əlaqə</a></li>
+      </ul>
+      <div class="nav__controls">
+        <div class="lang-selector">
+          <button class="lang-btn" aria-label="Select language">
+            <span class="lang-flag">🌐</span>
+            <span class="lang-current">AZ</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+            <button class="lang-option"        data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+            <button class="lang-option"        data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+          </div>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="contact.html" class="btn btn-primary btn-sm nav__cta" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav__progress"></div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html"    class="nav__mobile-link" data-i18n="nav_home">Ana Səhifə <span>→</span></a>
+  <a href="services.html" class="nav__mobile-link" data-i18n="nav_services">Xidmətlər <span>→</span></a>
+  <a href="about.html"    class="nav__mobile-link" data-i18n="nav_about">Haqqımızda <span>→</span></a>
+  <a href="pricing.html"  class="nav__mobile-link" data-i18n="nav_pricing">Qiymətlər <span>→</span></a>
+  <a href="contact.html"  class="nav__mobile-link" data-i18n="nav_contact">Əlaqə <span>→</span></a>
+  <div class="nav__mobile-controls">
+    <div class="lang-selector">
+      <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lang-dropdown">
+        <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+        <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+        <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+      </div>
+    </div>
+    <button class="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/></svg></button>
+    <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center" data-i18n="nav_cta">Konsultasiya</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero">
+  <div class="hero__bg">
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__orb hero__orb--3"></div>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="container hero__content">
+    <div class="hero__layout">
+
+      <!-- Left: Text -->
+      <div>
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          <span class="hero__badge-text" data-i18n="hero_badge">Azərbaycanın №1 Kol Mərkəzi</span>
+        </div>
+
+        <h1 class="hero__title">
+          <span class="line"><span data-i18n="hero_title_1">Biznesinizi</span></span>
+          <span class="line"><span class="grad-text" data-i18n="hero_title_2">İrəliyə</span></span>
+          <span class="line"><span data-i18n="hero_title_3">Aparın</span></span>
+        </h1>
+
+        <p class="hero__desc" data-i18n="hero_desc">
+          Müştərilərinizlə peşəkar ünsiyyət qurun. 7/24 aktiv kol mərkəzi xidmətlərimizlə satışlarınızı artırın, müştəri məmnuniyyətini yüksəldin.
+        </p>
+
+        <div class="hero__actions">
+          <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="hero_btn_main">Pulsuz Sınaq Başlat</a>
+          <a href="services.html" class="btn btn-ghost btn-lg" data-i18n="hero_btn_sec">Xidmətlərə Bax</a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <div class="hero__stat-num" data-i18n="hero_stat_1">98%</div>
+            <div class="hero__stat-label" data-i18n="hero_stat_1l">Məmnuniyyət</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-num" data-i18n="hero_stat_2">500+</div>
+            <div class="hero__stat-label" data-i18n="hero_stat_2l">Müştəri</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-num" data-i18n="hero_stat_3">7/24</div>
+            <div class="hero__stat-label" data-i18n="hero_stat_3l">Aktiv Dəstək</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Visual -->
+      <div class="hero__visual">
+        <!-- Floating card 1 -->
+        <div class="hero__float-card hero__float-card--1">
+          <div class="hero__float-label" data-i18n="hero_card1_lbl">Bu gün həll edilən zənglər</div>
+          <div class="hero__float-value" data-i18n="hero_card1_val">1,247</div>
+          <div class="hero__float-sub">↑ <span data-i18n="hero_card1_sub">+12% artım</span></div>
+        </div>
+
+        <!-- Phone Mockup -->
+        <div class="hero__phone">
+          <div class="hero__phone-screen">
+            <div class="hero__phone-header">
+              <div class="hero__phone-avatar"></div>
+              <div class="hero__phone-info">
+                <div class="hero__phone-name" data-i18n="hero_phone_name">Kol Agenti — Leyla</div>
+                <div class="hero__phone-status" data-i18n="hero_phone_stat">Onlayn</div>
+              </div>
+            </div>
+            <div class="hero__msg hero__msg--in" data-i18n="hero_msg1">Salam! CallPro ilə necə kömək edə bilərəm?</div>
+            <div class="hero__msg hero__msg--out" data-i18n="hero_msg2">Sifarişim haqqında məlumat almaq istəyirəm</div>
+            <div class="hero__msg hero__msg--in" data-i18n="hero_msg3">Əlbəttə! Bir dəqiqə gözləyin, izləyirəm.</div>
+          </div>
+        </div>
+
+        <!-- Floating card 2 -->
+        <div class="hero__float-card hero__float-card--2">
+          <div class="hero__float-label" data-i18n="hero_card2_lbl">Ortalama cavab vaxtı</div>
+          <div class="hero__float-value" data-i18n="hero_card2_val">8 san</div>
+          <div class="hero__float-sub">⚡ <span data-i18n="hero_card2_sub">Sənaye ortalama: 45 san</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+
+</section>
+
+<!-- ═══════════════════════ SERVICES ═══════════════════════ -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="label reveal" data-i18n="svc_label">Xidmətlərimiz</span>
+      <h2 class="display-md reveal stagger-1" data-i18n="svc_title">Biznesiniz üçün Tam Həll</h2>
+      <p class="reveal stagger-2" data-i18n="svc_desc">Hər ölçüdə bizneslər üçün nəzərdə tutulmuş peşəkar kol mərkəzi xidmətləri.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="service-card reveal stagger-1">
+        <div class="service-card__icon service-card__icon--blue">📞</div>
+        <h3 class="service-card__title" data-i18n="svc_1_title">Daxil olan Zənglər</h3>
+        <p class="service-card__desc" data-i18n="svc_1_desc">Müştəri sorğularını peşəkar şəkildə idarə edirik. Hər zəng vaxtında cavablanır.</p>
+        <a href="services.html" class="service-card__arrow" data-i18n="svc_more">Ətraflı Öyrən →</a>
+      </div>
+      <div class="service-card reveal stagger-2">
+        <div class="service-card__icon service-card__icon--purple">📤</div>
+        <h3 class="service-card__title" data-i18n="svc_2_title">Çıxan Zənglər</h3>
+        <p class="service-card__desc" data-i18n="svc_2_desc">Satış kampaniyaları, anketzlər və müştəri əlaqəsi üçün effektiv çıxan zəng xidməti.</p>
+        <a href="services.html" class="service-card__arrow" data-i18n="svc_more">Ətraflı Öyrən →</a>
+      </div>
+      <div class="service-card reveal stagger-3">
+        <div class="service-card__icon service-card__icon--red">🛠</div>
+        <h3 class="service-card__title" data-i18n="svc_3_title">Texniki Dəstək</h3>
+        <p class="service-card__desc" data-i18n="svc_3_desc">Müştərilərinizin texniki problemlərini peşəkar mütəxəssislərimiz həll edir.</p>
+        <a href="services.html" class="service-card__arrow" data-i18n="svc_more">Ətraflı Öyrən →</a>
+      </div>
+      <div class="service-card reveal stagger-4">
+        <div class="service-card__icon service-card__icon--green">🔗</div>
+        <h3 class="service-card__title" data-i18n="svc_4_title">CRM İnteqrasiyası</h3>
+        <p class="service-card__desc" data-i18n="svc_4_desc">Mövcud CRM sistemlərinizlə tam inteqrasiya. Bütün məlumatlar sinxronlaşdırılır.</p>
+        <a href="services.html" class="service-card__arrow" data-i18n="svc_more">Ətraflı Öyrən →</a>
+      </div>
+      <div class="service-card reveal stagger-5">
+        <div class="service-card__icon service-card__icon--orange">🌍</div>
+        <h3 class="service-card__title" data-i18n="svc_5_title">Çoxdilli Dəstək</h3>
+        <p class="service-card__desc" data-i18n="svc_5_desc">Azərbaycanca, Rusca, İngiliscə və digər dillərde müştəri xidməti.</p>
+        <a href="services.html" class="service-card__arrow" data-i18n="svc_more">Ətraflı Öyrən →</a>
+      </div>
+      <div class="service-card reveal stagger-6">
+        <div class="service-card__icon service-card__icon--teal">📊</div>
+        <h3 class="service-card__title" data-i18n="svc_6_title">Analitika & Hesabat</h3>
+        <p class="service-card__desc" data-i18n="svc_6_desc">Real vaxt hesabatları, zəng analitikası və performans monitorinqi.</p>
+        <a href="services.html" class="service-card__arrow" data-i18n="svc_more">Ətraflı Öyrən →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ STATS ═══════════════════════ -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal stagger-1">
+        <div class="stat-num" data-i18n="stats_1">500+</div>
+        <div class="stat-label" data-i18n="stats_1l">Aktiv Müştəri</div>
+      </div>
+      <div class="stat-item reveal stagger-2">
+        <div class="stat-num" data-i18n="stats_2">98%</div>
+        <div class="stat-label" data-i18n="stats_2l">Məmnuniyyət Faizi</div>
+      </div>
+      <div class="stat-item reveal stagger-3">
+        <div class="stat-num" data-i18n="stats_3">1.2M</div>
+        <div class="stat-label" data-i18n="stats_3l">Aylıq Zənglər</div>
+      </div>
+      <div class="stat-item reveal stagger-4">
+        <div class="stat-num" data-i18n="stats_4">8 san</div>
+        <div class="stat-label" data-i18n="stats_4l">Ortalama Cavab</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ WHY US ═══════════════════════ -->
+<section class="section why-us">
+  <div class="container">
+    <div class="why-us__layout">
+      <!-- Visual -->
+      <div class="why-us__visual reveal-left">
+        <div class="why-us__bg-card">
+          <div class="why-us__dashboard">
+            <div class="why-dash-row">
+              <div class="why-dash-card">
+                <div class="why-dash-label" data-i18n="why_dash_calls">Bu gün zənglər</div>
+                <div class="why-dash-value">1,247</div>
+                <div class="why-dash-bar-wrap"><div class="why-dash-bar" style="width:78%"></div></div>
+              </div>
+              <div class="why-dash-card">
+                <div class="why-dash-label" data-i18n="why_dash_sat">Məmnuniyyət</div>
+                <div class="why-dash-value">98%</div>
+                <div class="why-dash-bar-wrap"><div class="why-dash-bar" style="width:98%"></div></div>
+              </div>
+            </div>
+            <div class="why-dash-chart">
+              <div class="why-dash-label" data-i18n="why_dash_perf">Performans</div>
+              <div class="why-dash-mini-bars">
+                <div class="mini-bar"></div><div class="mini-bar"></div><div class="mini-bar"></div>
+                <div class="mini-bar"></div><div class="mini-bar"></div><div class="mini-bar"></div>
+                <div class="mini-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal-right">
+        <span class="label" data-i18n="why_label">Niyə Biz?</span>
+        <h2 class="display-md" style="margin:16px 0 12px" data-i18n="why_title">Rəqabətsiz Üstünlüklər</h2>
+        <p style="color:var(--text-secondary);margin-bottom:32px" data-i18n="why_desc">15 illik təcrübə, 500-dən çox müştəri, sübut olunmuş nəticələr.</p>
+
+        <ul class="why-features">
+          <li class="why-feature">
+            <div class="why-feature__check">✓</div>
+            <div class="why-feature__text">
+              <strong data-i18n="why_f1_t">7/24 Fasiləsiz Xidmət</strong>
+              <span data-i18n="why_f1_d">Həftəsonları da daxil olmaqla günün hər saatı aktiv operatorlar.</span>
+            </div>
+          </li>
+          <li class="why-feature">
+            <div class="why-feature__check">✓</div>
+            <div class="why-feature__text">
+              <strong data-i18n="why_f2_t">Sertifikatlı Operatorlar</strong>
+              <span data-i18n="why_f2_d">Bütün operatorlarımız beynəlxalq standartlara görə sertifikatlaşdırılıb.</span>
+            </div>
+          </li>
+          <li class="why-feature">
+            <div class="why-feature__check">✓</div>
+            <div class="why-feature__text">
+              <strong data-i18n="why_f3_t">Real Vaxt Monitorinq</strong>
+              <span data-i18n="why_f3_d">Hər zəngi canlı izləyin, hesabatlara anında giriş əldə edin.</span>
+            </div>
+          </li>
+          <li class="why-feature">
+            <div class="why-feature__check">✓</div>
+            <div class="why-feature__text">
+              <strong data-i18n="why_f4_t">GDPR Uyğunluğu</strong>
+              <span data-i18n="why_f4_d">Bütün məlumatlar beynəlxalq gizlilik standartlarına uyğun qorunur.</span>
+            </div>
+          </li>
+        </ul>
+
+        <a href="about.html" class="btn btn-primary" style="margin-top:24px" data-i18n="nav_about">Haqqımızda</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PROCESS ═══════════════════════ -->
+<section class="section process">
+  <div class="container">
+    <div class="section-header">
+      <span class="label reveal" data-i18n="proc_label">Necə İşləyirik</span>
+      <h2 class="display-md reveal stagger-1" data-i18n="proc_title">Başlamaq Asandır</h2>
+      <p class="reveal stagger-2" data-i18n="proc_desc">4 sadə addımla kol mərkəzimizə qoşulun.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal stagger-1">
+        <div class="process-step__num">01</div>
+        <h3 class="process-step__title" data-i18n="proc_1_t">Konsultasiya</h3>
+        <p class="process-step__desc" data-i18n="proc_1_d">Bizimlə əlaqə qurun. Ehtiyaclarınızı birlikdə müəyyən edirik.</p>
+      </div>
+      <div class="process-step reveal stagger-2">
+        <div class="process-step__num">02</div>
+        <h3 class="process-step__title" data-i18n="proc_2_t">Konfiqrasiya</h3>
+        <p class="process-step__desc" data-i18n="proc_2_d">Sizin üçün xüsusi skriptlər, prosedurlar hazırlayırıq.</p>
+      </div>
+      <div class="process-step reveal stagger-3">
+        <div class="process-step__num">03</div>
+        <h3 class="process-step__title" data-i18n="proc_3_t">İnteqrasiya</h3>
+        <p class="process-step__desc" data-i18n="proc_3_d">Sistemlərinizlə tam inteqrasiya həyata keçiririk.</p>
+      </div>
+      <div class="process-step reveal stagger-4">
+        <div class="process-step__num">04</div>
+        <h3 class="process-step__title" data-i18n="proc_4_t">Başlayın</h3>
+        <p class="process-step__desc" data-i18n="proc_4_d">24 saat ərzində tam aktiv vəziyyətə gəlirik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+<section class="section testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="label reveal" data-i18n="test_label">Müştəri Rəyləri</span>
+      <h2 class="display-md reveal stagger-1" data-i18n="test_title">Onlar Artıq Bizimlə</h2>
+      <p class="reveal stagger-2" data-i18n="test_desc">500-dən çox məmnun müştərimizin sözləri.</p>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonial-card reveal stagger-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" data-i18n="test_1">"CallPro ilə işlədikdən sonra müştəri məmnuniyyətimiz 40% artdı. Peşəkar komanda, möhtəşəm nəticələr."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--grad-accent)">E</div>
+          <div>
+            <div class="testimonial-name" data-i18n="test_1_name">Elçin Məmmədov</div>
+            <div class="testimonial-role" data-i18n="test_1_role">CEO, TechStart Bakı</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal stagger-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" data-i18n="test_2">"Texniki dəstək xidmətlərini onlara həvalə etdik. İndi komandamız əsas işə fokuslanır. Tövsiyə edirəm!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--grad-warm)">A</div>
+          <div>
+            <div class="testimonial-name" data-i18n="test_2_name">Aytən Hüseynova</div>
+            <div class="testimonial-role" data-i18n="test_2_role">COO, RetailAZ</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal stagger-3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" data-i18n="test_3">"Çıxan zəng kampaniyamızın nəticəsi sürpriz etdi. Satışlarımız ilk ayda 25% artdı!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#7B2FFF,#FF3D6B)">R</div>
+          <div>
+            <div class="testimonial-name" data-i18n="test_3_name">Rauf Əliyev</div>
+            <div class="testimonial-role" data-i18n="test_3_role">Satış Direktoru, FinancePro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<section class="section faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="reveal-left">
+        <span class="label" data-i18n="faq_label">Tez-tez soruşulanlar</span>
+        <h2 class="display-md" style="margin:16px 0 12px" data-i18n="faq_title">Suallarınıza Cavablar</h2>
+        <p style="color:var(--text-secondary);margin-bottom:32px" data-i18n="faq_desc">Sualınızı tapmadınız? Bizimlə əlaqə saxlayın.</p>
+        <a href="contact.html" class="btn btn-primary" data-i18n="nav_contact">Əlaqə</a>
+      </div>
+      <div class="faq-list reveal-right">
+        <div class="faq-item open">
+          <div class="faq-q"><span data-i18n="faq_q1">Xidmət neçə müddətdən sonra başlayır?</span><span class="faq-chevron">▼</span></div>
+          <div class="faq-a" style="max-height:200px"><div class="faq-a-inner" data-i18n="faq_a1">Müqavilə imzalandıqdan sonra 24-48 saat ərzində xidmət tam aktiv olur.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span data-i18n="faq_q2">Operatorlar hansı dillərdə xidmət göstərir?</span><span class="faq-chevron">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a2">Operatorlarımız Azərbaycanca, Rusca, İngilis dilində xidmət göstərir.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span data-i18n="faq_q3">Zəngləri real vaxtda izləyə bilərəmmi?</span><span class="faq-chevron">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a3">Bəli, xüsusi dashboard vasitəsilə bütün zəngləri real vaxtda izləyə bilərsiniz.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span data-i18n="faq_q4">Müqavilə minimal müddəti nə qədərdir?</span><span class="faq-chevron">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a4">Minimum 3 aylıq müqavilə tələb olunur.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span data-i18n="faq_q5">Mövcud CRM sistemimizlə inteqrasiya mümkündürmü?</span><span class="faq-chevron">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a5">Bəli, Salesforce, Bitrix24, AmoCRM, HubSpot ilə tam inteqrasiya mümkündür.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span data-i18n="faq_q6">Zənglərin qeydiyyatı aparılırmı?</span><span class="faq-chevron">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a6">Qanunvericiliyə uyğun olaraq bütün zənglər qeydə alınır.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA ═══════════════════════ -->
+<section class="cta-section">
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="container cta-section__content">
+    <span class="label reveal" style="color:rgba(0,212,255,0.8)">Hazırsınız?</span>
+    <h2 class="display-md reveal stagger-1" data-i18n="cta_title">Biznesinizi Növbəti Səviyyəyə Çıxarın</h2>
+    <p class="reveal stagger-2" data-i18n="cta_desc">Pulsuz konsultasiya alın, 30 günlük sınaq müddəti ilə başlayın.</p>
+    <div class="cta-actions reveal stagger-3">
+      <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="cta_btn1">Pulsuz Başlayın</a>
+      <a href="#" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff" data-i18n="cta_btn2">Demo İzləyin</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="nav__logo">
+          <div class="nav__logo-mark"></div>
+          <span class="nav__logo-text" style="color:#fff">Call<span>Pro</span> AZ</span>
+        </a>
+        <p class="footer__brand-desc" data-i18n="footer_desc">Azərbaycanın aparıcı kol mərkəzi xidmətleri. 7/24 peşəkar dəstək.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer__social" aria-label="Facebook">f</a>
+          <a href="#" class="footer__social" aria-label="Instagram">📷</a>
+          <a href="#" class="footer__social" aria-label="Telegram">✈</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col1">Xidmətlər</div>
+        <ul class="footer__links">
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l1">Daxil olan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l2">Çıxan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l3">Texniki Dəstək</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l4">CRM İnteqrasiya</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l5">Analitika</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col2">Şirkət</div>
+        <ul class="footer__links">
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m1">Haqqımızda</a></li>
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m2">Komanda</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m3">Karyera</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m4">Blog</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m5">Mətbuata</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col3">Dəstək</div>
+        <ul class="footer__links">
+          <li><a href="#"            class="footer__link" data-i18n="footer_n1">Sənədlər</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n2">API</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n3">Status</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n4">Siyasət</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n5">Şərtlər</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copyright" data-i18n="footer_copy">© 2025 CallPro AZ. Bütün hüquqlar qorunur.</span>
+      <div class="footer__legal">
+        <a href="#" data-i18n="footer_priv">Məxfilik</a>
+        <a href="#" data-i18n="footer_terms">Şərtlər</a>
+        <a href="#" data-i18n="footer_cookies">Kukilər</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Cookies Banner -->
+<div class="cookies-banner">
+  <p data-i18n="cookie_text">Saytımız təcrübənizi yaxşılaşdırmaq üçün kukilər istifadə edir. <a href="#">Ətraflı</a></p>
+  <div class="cookies-actions">
+    <button class="btn btn-sm btn-ghost cookie-decline" data-i18n="cookie_decline">İmtina et</button>
+    <button class="btn btn-sm btn-primary cookie-accept" data-i18n="cookie_accept">Qəbul et</button>
+  </div>
+</div>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<!-- Scripts -->
+<script src="js/translations.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

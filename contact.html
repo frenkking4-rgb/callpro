@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="az" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CallPro AZ ilə əlaqə — Sorğu göndərin, konsultasiya alın, bizimlə danışın."/>
+  <title>Əlaqə — CallPro AZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+  <style>
+    /* ── Contact Layout ── */
+    .contact-page { background: var(--bg); padding: clamp(60px, 8vw, 120px) 0; }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+    .contact-info { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .contact-info h2 { margin-bottom: 12px; }
+    .contact-info p  { color: var(--text-secondary); margin-bottom: 32px; line-height: 1.7; }
+    .contact-info-cards { display: flex; flex-direction: column; gap: 12px; }
+    .contact-info-card {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: clamp(16px, 2.5vw, 22px);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: all var(--dur-fast) var(--ease);
+      cursor: default;
+    }
+    .contact-info-card:hover { border-color: rgba(0,212,255,0.25); transform: translateX(4px); }
+    .contact-info-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: var(--radius-sm);
+      background: rgba(0,212,255,0.10);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-info-title { font-weight: 700; font-size: 0.875rem; margin-bottom: 4px; }
+    .contact-info-value { font-size: 0.875rem; color: var(--text-secondary); }
+    .contact-info-value a { color: var(--accent); }
+
+    /* ── Social Strip ── */
+    .social-strip { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    .social-chip {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all var(--dur-fast);
+    }
+    .social-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Form Card ── */
+    .contact-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 5vw, 56px);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad-accent);
+    }
+
+    /* ── Step indicator ── */
+    .form-steps-wrap { margin-bottom: 36px; }
+    .form-step-panels > * { display: none; }
+    .form-step-panels > .active { display: block; }
+
+    /* ── Radio Cards ── */
+    .radio-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .radio-card { position: relative; }
+    .radio-card input { position: absolute; opacity: 0; pointer-events: none; }
+    .radio-card-label {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 4px;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .radio-card-label span { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
+    .radio-card-label .icon { font-size: 1.2rem; margin-bottom: 4px; }
+    .radio-card input:checked + .radio-card-label {
+      border-color: var(--accent);
+      background: rgba(0,212,255,0.06);
+      color: var(--accent);
+    }
+    .radio-card-label:hover { border-color: rgba(0,212,255,0.35); }
+
+    /* ── Nav buttons ── */
+    .form-nav { display: flex; gap: 12px; margin-top: 28px; justify-content: flex-end; }
+    .form-nav .btn-prev { color: var(--text-secondary); }
+
+    /* ── Map placeholder ── */
+    .map-wrap {
+      margin-top: clamp(60px, 8vw, 120px);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      height: clamp(260px, 40vw, 440px);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      position: relative;
+    }
+    .map-wrap-label { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .map-pin { font-size: 3rem; animation: mapPinBounce 2s ease-in-out infinite; }
+    @keyframes mapPinBounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .map-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .map-content { position: relative; z-index: 1; text-align: center; }
+    .map-address {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1023px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-info { position: static; }
+    }
+    @media (max-width: 639px) {
+      .radio-cards { grid-template-columns: 1fr; }
+      .contact-form-card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="loading-screen">
+  <div class="loading-logo">
+    <div class="loading-mark"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="13" r="7" stroke="white" stroke-width="2.5"/><circle cx="23" cy="24" r="3" fill="white"/></svg></div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+<div class="cursor-glow"></div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="container"><div class="nav__inner">
+    <a href="index.html" class="nav__logo"><div class="nav__logo-mark"></div><span class="nav__logo-text">Call<span>Pro</span> AZ</span></a>
+    <ul class="nav__menu">
+      <li><a href="index.html"    class="nav__link" data-i18n="nav_home">Ana Səhifə</a></li>
+      <li><a href="services.html" class="nav__link" data-i18n="nav_services">Xidmətlər</a></li>
+      <li><a href="about.html"    class="nav__link" data-i18n="nav_about">Haqqımızda</a></li>
+      <li><a href="pricing.html"  class="nav__link" data-i18n="nav_pricing">Qiymətlər</a></li>
+      <li><a href="contact.html"  class="nav__link" data-i18n="nav_contact">Əlaqə</a></li>
+    </ul>
+    <div class="nav__controls">
+      <div class="lang-selector">
+        <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="lang-dropdown">
+          <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+          <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+          <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+        </div>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+        <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="contact.html" class="btn btn-primary btn-sm nav__cta" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+    </div>
+    <button class="nav__hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div></div>
+  <div class="nav__progress"></div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html"    class="nav__mobile-link" data-i18n="nav_home">Ana Səhifə <span>→</span></a>
+  <a href="services.html" class="nav__mobile-link" data-i18n="nav_services">Xidmətlər <span>→</span></a>
+  <a href="about.html"    class="nav__mobile-link" data-i18n="nav_about">Haqqımızda <span>→</span></a>
+  <a href="pricing.html"  class="nav__mobile-link" data-i18n="nav_pricing">Qiymətlər <span>→</span></a>
+  <a href="contact.html"  class="nav__mobile-link" data-i18n="nav_contact">Əlaqə <span>→</span></a>
+  <div class="nav__mobile-controls">
+    <div class="lang-selector">
+      <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lang-dropdown">
+        <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+        <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+        <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+      </div>
+    </div>
+    <button class="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg></button>
+    <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center" data-i18n="nav_cta">Konsultasiya</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="hero__grid"></div>
+  <div class="container page-hero__content">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav_home">Ana Səhifə</a><span>›</span>
+      <span data-i18n="nav_contact">Əlaqə</span>
+    </div>
+    <span class="label reveal" style="color:rgba(0,212,255,0.8)" data-i18n="contact_label">Əlaqə</span>
+    <h1 class="display-lg reveal stagger-1" style="color:#fff;margin:16px 0" data-i18n="contact_title">Bizimlə Əlaqə Saxlayın</h1>
+    <p class="reveal stagger-2" data-i18n="contact_desc">30 dəqiqə ərzində sizinlə əlaqə saxlayacağıq.</p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-page">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: Info -->
+      <div class="contact-info reveal-left">
+        <h2 class="display-sm" data-i18n="contact_title">Bizimlə Əlaqə</h2>
+        <p data-i18n="contact_desc">30 dəqiqə ərzində sizinlə əlaqə saxlayacağıq.</p>
+
+        <div class="contact-info-cards">
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <div class="contact-info-title" data-i18n="contact_phone">Telefon</div>
+              <div class="contact-info-value"><a href="tel:+994125550011" data-i18n="contact_phone_v">+994 12 555 00 11</a></div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon">✉️</div>
+            <div>
+              <div class="contact-info-title" data-i18n="contact_email">Email</div>
+              <div class="contact-info-value"><a href="mailto:info@callpro.az" data-i18n="contact_email_v">info@callpro.az</a></div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <div class="contact-info-title" data-i18n="contact_addr">Ünvan</div>
+              <div class="contact-info-value" data-i18n="contact_addr_v">Bakı, Nərimanov, AZ1000</div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon">🕐</div>
+            <div>
+              <div class="contact-info-title" data-i18n="contact_hours">İş Saatları</div>
+              <div class="contact-info-value" data-i18n="contact_hours_v">Həftəiçi: 09:00–18:00</div>
+              <div class="contact-info-value" style="margin-top:2px;color:var(--accent);font-size:0.8rem">7/24 Kol Mərkəzi Aktiv ✓</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-strip">
+          <a href="#" class="social-chip">💼 LinkedIn</a>
+          <a href="#" class="social-chip">📘 Facebook</a>
+          <a href="#" class="social-chip">✈ Telegram</a>
+          <a href="#" class="social-chip">📷 Instagram</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Multi-step Form -->
+      <div class="reveal-right">
+        <div class="contact-form-card">
+
+          <!-- Steps indicator -->
+          <div class="form-steps-wrap">
+            <div class="form-steps" id="formSteps">
+              <div class="form-step active" data-step="1">
+                <div class="form-step__circle">01</div>
+                <div class="form-step__label">Məlumat</div>
+              </div>
+              <div class="form-step" data-step="2">
+                <div class="form-step__circle">02</div>
+                <div class="form-step__label">Xidmət</div>
+              </div>
+              <div class="form-step" data-step="3">
+                <div class="form-step__circle">03</div>
+                <div class="form-step__label">Detallar</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-body">
+            <!-- STEP 1: Contact Info -->
+            <div class="form-step-panels" id="stepPanels">
+              <div class="active" id="panel1">
+                <h3 style="font-size:1.1rem;margin-bottom:6px" data-i18n="form_title">Sorğu Göndərin</h3>
+                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px">Addım 1 / 3 — Əlaqə məlumatlarınız</p>
+                <div class="form-grid form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label" for="fname" data-i18n="form_name">Ad Soyad <span>*</span></label>
+                    <input class="form-control" id="fname" name="name" type="text" placeholder="Elçin Məmmədov" required/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="fcompany" data-i18n="form_company">Şirkət adı</label>
+                    <input class="form-control" id="fcompany" name="company" type="text" placeholder="TechStart Bakı"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="fphone" data-i18n="form_phone">Telefon <span>*</span></label>
+                    <input class="form-control" id="fphone" name="phone" type="tel" placeholder="+994 70 000 00 00" required/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="femail" data-i18n="form_email">E-mail <span>*</span></label>
+                    <input class="form-control" id="femail" name="email" type="email" placeholder="elchin@company.az" required/>
+                  </div>
+                </div>
+                <div class="form-nav">
+                  <button class="btn btn-primary" id="nextBtn1">Növbəti <span>→</span></button>
+                </div>
+              </div>
+
+              <!-- STEP 2: Service -->
+              <div id="panel2">
+                <h3 style="font-size:1.1rem;margin-bottom:6px">Xidmət seçin</h3>
+                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px">Addım 2 / 3 — Hansı xidmətlə maraqlanırsınız?</p>
+                <div class="radio-cards">
+                  <label class="radio-card">
+                    <input type="radio" name="service" value="inbound" checked/>
+                    <div class="radio-card-label"><div class="icon">📞</div><strong data-i18n="svc_1_title">Daxil olan Zənglər</strong><span>Müştəri dəstəyi</span></div>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="service" value="outbound"/>
+                    <div class="radio-card-label"><div class="icon">📤</div><strong data-i18n="svc_2_title">Çıxan Zənglər</strong><span>Satış kampaniyası</span></div>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="service" value="techsupport"/>
+                    <div class="radio-card-label"><div class="icon">🛠</div><strong data-i18n="svc_3_title">Texniki Dəstək</strong><span>IT yardım masası</span></div>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="service" value="crm"/>
+                    <div class="radio-card-label"><div class="icon">🔗</div><strong data-i18n="svc_4_title">CRM İnteqrasiya</strong><span>Sistem birləşdirmə</span></div>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="service" value="analytics"/>
+                    <div class="radio-card-label"><div class="icon">📊</div><strong data-i18n="svc_6_title">Analitika</strong><span>Dashboard & Hesabat</span></div>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="service" value="full"/>
+                    <div class="radio-card-label"><div class="icon">🏢</div><strong>Kompleks Həll</strong><span>Hamısı birlikdə</span></div>
+                  </label>
+                </div>
+                <div class="form-nav">
+                  <button class="btn btn-ghost btn-prev" id="prevBtn2">← Geri</button>
+                  <button class="btn btn-primary" id="nextBtn2">Növbəti →</button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Details -->
+              <div id="panel3">
+                <h3 style="font-size:1.1rem;margin-bottom:6px">Əlavə detallar</h3>
+                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px">Addım 3 / 3 — Sizi daha yaxşı tanıyaq</p>
+
+                <div class="form-group" style="margin-bottom:20px">
+                  <label class="form-label" for="fcalls" data-i18n="form_calls">Aylıq zəng həcmi</label>
+                  <div class="form-range-wrap">
+                    <input type="range" class="form-range" id="fcalls" min="100" max="10000" value="1000" step="100"/>
+                    <div class="form-range-labels">
+                      <span data-i18n="form_calls_l">100</span>
+                      <strong><span id="callsOutput">1,000</span> zəng/ay</strong>
+                      <span data-i18n="form_calls_r">10,000+</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:20px">
+                  <label class="form-label" for="fmsg" data-i18n="form_msg">Əlavə qeyd</label>
+                  <textarea class="form-control" id="fmsg" name="message" rows="4" placeholder="Biznesiniz haqqında qısa məlumat, xüsusi tələblər..."></textarea>
+                </div>
+
+                <div class="form-group" style="margin-bottom:28px">
+                  <label class="form-check">
+                    <input type="checkbox" required/>
+                    <span class="form-check-label" data-i18n="form_agree">Məxfilik siyasəti ilə razılaşıram</span>
+                  </label>
+                </div>
+
+                <div class="form-nav">
+                  <button class="btn btn-ghost btn-prev" id="prevBtn3">← Geri</button>
+                  <button class="btn btn-primary btn-submit" id="submitBtn">
+                    <span class="btn-text" data-i18n="form_submit">Sorğu Göndər</span>
+                    <span class="btn-loader"><div class="loader-ring"></div></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div class="form-success" id="formSuccess">
+              <div class="form-success__icon">✅</div>
+              <h3 data-i18n="form_success_t" style="font-size:1.3rem">Sorğunuz göndərildi!</h3>
+              <p style="color:var(--text-secondary)" data-i18n="form_success_d">Ən qısa zamanda sizinlə əlaqə saxlayacağıq.</p>
+              <a href="index.html" class="btn btn-ghost" style="margin-top:8px">Ana Səhifəyə Qayıt</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Map -->
+    <div class="map-wrap reveal">
+      <div class="map-grid-bg"></div>
+      <div class="map-content">
+        <div class="map-pin">📍</div>
+        <div class="map-wrap-label">Bizim Ofis</div>
+        <div class="map-address">Bakı, Nərimanov rayonu, Tbilisi pr. 17, AZ1078</div>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="margin-top:12px">Google Maps-da Aç ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="nav__logo"><div class="nav__logo-mark"></div><span class="nav__logo-text" style="color:#fff">Call<span>Pro</span> AZ</span></a>
+        <p class="footer__brand-desc" data-i18n="footer_desc">Azərbaycanın aparıcı kol mərkəzi xidmətleri. 7/24 peşəkar dəstək.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social">in</a><a href="#" class="footer__social">f</a><a href="#" class="footer__social">📷</a><a href="#" class="footer__social">✈</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col1">Xidmətlər</div>
+        <ul class="footer__links">
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l1">Daxil olan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l2">Çıxan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l3">Texniki Dəstək</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l4">CRM İnteqrasiya</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col2">Şirkət</div>
+        <ul class="footer__links">
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m1">Haqqımızda</a></li>
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m2">Komanda</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m3">Karyera</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col3">Dəstək</div>
+        <ul class="footer__links">
+          <li><a href="contact.html" class="footer__link" data-i18n="nav_contact">Əlaqə</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n4">Siyasət</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n5">Şərtlər</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copyright" data-i18n="footer_copy">© 2025 CallPro AZ. Bütün hüquqlar qorunur.</span>
+      <div class="footer__legal">
+        <a href="#" data-i18n="footer_priv">Məxfilik</a>
+        <a href="#" data-i18n="footer_terms">Şərtlər</a>
+        <a href="#" data-i18n="footer_cookies">Kukilər</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies-banner">
+  <p data-i18n="cookie_text">Saytımız kukilər istifadə edir.</p>
+  <div class="cookies-actions">
+    <button class="btn btn-sm btn-ghost cookie-decline" data-i18n="cookie_decline">İmtina et</button>
+    <button class="btn btn-sm btn-primary cookie-accept" data-i18n="cookie_accept">Qəbul et</button>
+  </div>
+</div>
+<button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<script src="js/translations.js"></script>
+<script src="js/app.js"></script>
+<script>
+/* ── Multi-step form logic ── */
+const panels  = document.querySelectorAll('#stepPanels > div');
+const steps   = document.querySelectorAll('.form-step');
+let current   = 0;
+
+function goTo(idx) {
+  panels[current].classList.remove('active');
+  steps[current].classList.remove('active');
+  steps[current].classList.add('done');
+  current = idx;
+  panels[current].classList.add('active');
+  steps[current].classList.add('active');
+  steps[current].classList.remove('done');
+  // Reset done for subsequent
+  for (let i = idx + 1; i < steps.length; i++) {
+    steps[i].classList.remove('active', 'done');
+  }
+  // Scroll form into view on mobile
+  if (window.innerWidth < 768) {
+    document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function validateStep(panelIdx) {
+  const panel = panels[panelIdx];
+  const required = panel.querySelectorAll('[required]');
+  let ok = true;
+  required.forEach(f => {
+    if (f.type === 'checkbox') { if (!f.checked) ok = false; }
+    else if (!f.value.trim()) { f.classList.add('error'); ok = false; }
+    else f.classList.remove('error');
+  });
+  return ok;
+}
+
+document.getElementById('nextBtn1')?.addEventListener('click', () => {
+  if (validateStep(0)) goTo(1);
+});
+document.getElementById('nextBtn2')?.addEventListener('click', () => goTo(2));
+document.getElementById('prevBtn2')?.addEventListener('click', () => {
+  panels[1].classList.remove('active');
+  steps[1].classList.remove('active', 'done');
+  steps[0].classList.remove('done');
+  current = 0;
+  panels[0].classList.add('active');
+  steps[0].classList.add('active');
+});
+document.getElementById('prevBtn3')?.addEventListener('click', () => {
+  panels[2].classList.remove('active');
+  steps[2].classList.remove('active', 'done');
+  steps[1].classList.remove('done');
+  current = 1;
+  panels[1].classList.add('active');
+  steps[1].classList.add('active');
+});
+
+document.getElementById('submitBtn')?.addEventListener('click', async () => {
+  if (!validateStep(2)) return;
+  const btn = document.getElementById('submitBtn');
+  btn.classList.add('loading');
+  await new Promise(r => setTimeout(r, 1800));
+  btn.classList.remove('loading');
+  document.querySelector('.form-body').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('visible');
+});
+
+/* ── Range output ── */
+const callsInput = document.getElementById('fcalls');
+const callsOutput = document.getElementById('callsOutput');
+callsInput?.addEventListener('input', () => {
+  const v = parseInt(callsInput.value);
+  callsOutput.textContent = v >= 10000 ? '10,000+' : v.toLocaleString();
+  const pct = (v - 100) / (10000 - 100) * 100;
+  callsInput.style.background = `linear-gradient(to right, var(--accent) ${pct}%, var(--border) ${pct}%)`;
+});
+// Init
+if (callsInput) {
+  callsInput.style.background = `linear-gradient(to right, var(--accent) 9%, var(--border) 9%)`;
+}
+</script>
+</body>
+</html>

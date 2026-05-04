@@ -1,0 +1,378 @@
+/* ============================================================
+   RESPONSIVE.CSS — Professional Mobile-First Adaptive
+   ============================================================ */
+
+/* ─── BREAKPOINTS ───────────────────────────────────────────
+   xs:  0–479px    (small phones)
+   sm:  480–639px  (large phones)
+   md:  640–767px  (large phones / small tablets)
+   lg:  768–1023px (tablets)
+   xl:  1024–1279px (small desktops)
+   2xl: 1280px+    (desktops)
+   ──────────────────────────────────────────────────────── */
+
+/* ─── BASE MOBILE (xs) ────────────────────────────────────── */
+html { -webkit-text-size-adjust: 100%; }
+
+img, video, svg { max-width: 100%; height: auto; }
+
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Prevent overflow on mobile */
+body { overflow-x: hidden; }
+
+/* ─── CONTAINER FLUID ─────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px);
+}
+
+/* ─── SECTION SPACING ─────────────────────────────────────── */
+.section        { padding: clamp(60px, 8vw, 120px) 0; }
+.section--sm    { padding: clamp(40px, 5vw, 80px) 0; }
+.section--lg    { padding: clamp(80px, 10vw, 160px) 0; }
+
+/* ─── GRID SYSTEM ─────────────────────────────────────────── */
+.grid   { display: grid; gap: clamp(16px, 2.5vw, 32px); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ─── TYPOGRAPHY FLUID ────────────────────────────────────── */
+.display-xl { font-size: clamp(2.6rem, 7vw, 8rem); }
+.display-lg { font-size: clamp(2rem, 5vw, 5.5rem); }
+.display-md { font-size: clamp(1.6rem, 3.5vw, 3.2rem); }
+.display-sm { font-size: clamp(1.25rem, 2.5vw, 2.2rem); }
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero { padding-top: var(--nav-h); min-height: 100svh; }
+
+.hero__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: center;
+  padding: clamp(48px, 8vw, 100px) 0 clamp(60px, 8vw, 80px);
+}
+
+.hero__title { font-size: clamp(2.4rem, 5.5vw, 6.5rem); }
+
+.hero__desc { font-size: clamp(0.95rem, 1.5vw, 1.15rem); }
+
+.hero__stats { grid-template-columns: repeat(3, 1fr); }
+
+/* ─── SECTION HEADER ──────────────────────────────────────── */
+.section-header { margin-bottom: clamp(36px, 5vw, 72px); }
+.section-header p { font-size: clamp(0.95rem, 1.5vw, 1.1rem); }
+
+/* ─── CARDS ───────────────────────────────────────────────── */
+.card, .service-card, .pricing-card { padding: clamp(20px, 3vw, 40px); }
+
+/* ─── FORM CARD ───────────────────────────────────────────── */
+.form-card { padding: clamp(24px, 4vw, 56px); }
+
+/* ─── STATS GRID ──────────────────────────────────────────── */
+.stats-grid { grid-template-columns: repeat(4, 1fr); }
+
+/* ─── PROCESS STEPS ───────────────────────────────────────── */
+.process-steps { grid-template-columns: repeat(4, 1fr); }
+
+/* ─── TESTIMONIALS ────────────────────────────────────────── */
+.testimonials-track { grid-template-columns: repeat(3, 1fr); }
+
+/* ─── PRICING ─────────────────────────────────────────────── */
+.pricing-grid { grid-template-columns: repeat(3, 1fr); }
+
+/* ─── WHY US ──────────────────────────────────────────────── */
+.why-us__layout { grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); }
+
+/* ─── FAQ ─────────────────────────────────────────────────── */
+.faq-layout { grid-template-columns: 1fr 1.5fr; gap: clamp(40px, 5vw, 80px); }
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+.footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(32px, 4vw, 64px); }
+
+/* ─── CONTACT ─────────────────────────────────────────────── */
+.contact-layout { grid-template-columns: 1fr 1.6fr; gap: clamp(40px, 5vw, 72px); }
+
+/* ─── TEAM ────────────────────────────────────────────────── */
+.team-grid { grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.5vw, 32px); }
+
+/* ─── ABOUT SPLIT ─────────────────────────────────────────── */
+.about-split { grid-template-columns: 1fr 1fr; gap: clamp(40px, 5vw, 80px); }
+
+/* ══════════════════════════════════════════════════════════
+   XL: 1024px–1279px
+══════════════════════════════════════════════════════════ */
+@media (max-width: 1279px) {
+  .hero__phone { width: 240px; height: 480px; }
+  .hero__float-card--1 { right: -5%; }
+  .hero__float-card--2 { left: -5%; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   LG: 768px–1023px (Tablets)
+══════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+
+  /* Hero: stack vertically, center content */
+  .hero__layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+  .hero__desc   { margin: 0 auto 32px; max-width: 560px; }
+  .hero__actions { justify-content: center; }
+  .hero__stats  { max-width: 420px; margin: 40px auto 0; }
+  .hero__visual { display: none; }
+
+  /* Grids */
+  .grid-4        { grid-template-columns: repeat(2, 1fr); }
+  .grid-3        { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid    { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .process-steps::before { display: none; }
+  .testimonials-track { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid  { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .pricing-card--featured { transform: none; }
+  .team-grid     { grid-template-columns: repeat(2, 1fr); }
+  .about-split   { grid-template-columns: 1fr; }
+
+  /* Layouts */
+  .why-us__layout  { grid-template-columns: 1fr; }
+  .faq-layout      { grid-template-columns: 1fr; }
+  .contact-layout  { grid-template-columns: 1fr; }
+  .contact-info    { position: static; }
+  .footer__grid    { grid-template-columns: 1fr 1fr; gap: 36px; }
+
+  /* Nav */
+  .nav__menu { display: none; }
+  .nav__cta  { display: none; }
+  .nav__hamburger { display: flex; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MD: 640px–767px
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Hero */
+  .hero__stats { grid-template-columns: 1fr 1fr 1fr; }
+  .hero__badge-text { font-size: 0.65rem; }
+
+  /* Services grid: 1 column */
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+
+  /* Stats */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item  { padding: 32px 20px; }
+
+  /* Process */
+  .process-steps { grid-template-columns: 1fr 1fr; }
+
+  /* Testimonials */
+  .testimonials-track { grid-template-columns: 1fr; }
+
+  /* Pricing */
+  .pricing-grid { grid-template-columns: 1fr; }
+
+  /* FAQ */
+  .faq-layout { gap: 32px; }
+
+  /* Form */
+  .form-card     { padding: 24px 18px; }
+  .form-grid-2   { grid-template-columns: 1fr; }
+  .form-steps    { gap: 4px; }
+  .form-step__label { display: none; }
+
+  /* Team */
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Footer */
+  .footer__grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer__bottom { flex-direction: column; text-align: center; gap: 12px; }
+  .footer__legal  { gap: 16px; }
+
+  /* Section header */
+  .section-header { text-align: center; }
+  .section-header p { max-width: 100%; }
+
+  /* Why us dashboard */
+  .why-us__bg-card { aspect-ratio: auto; min-height: 260px; }
+  .why-dash-row { flex-direction: column; }
+
+  /* Contact info cards */
+  .contact-info-cards { gap: 12px; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SM: 480px–639px
+══════════════════════════════════════════════════════════ */
+@media (max-width: 639px) {
+
+  /* Hero adjustments */
+  .hero__stat-num  { font-size: 1.8rem; }
+  .hero__actions   { flex-direction: column; align-items: center; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+
+  /* Scroll indicator */
+  .hero__scroll { display: none; }
+
+  /* Process: single column */
+  .process-steps { grid-template-columns: 1fr; }
+
+  /* Team: 2 cols still */
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Pricing */
+  .pricing-price .pricing-amount { font-size: 3rem; }
+
+  /* Form steps */
+  .form-step__circle { width: 24px; height: 24px; font-size: 0.65rem; }
+  .form-steps::after { display: none; }
+
+  /* Cookies banner */
+  .cookies-banner { flex-direction: column; bottom: 16px; gap: 12px; }
+  .cookies-actions { width: 100%; }
+  .cookies-actions .btn { flex: 1; justify-content: center; }
+
+  /* Page hero */
+  .page-hero { min-height: 40vh; padding-bottom: 48px; }
+  .page-hero h1 { margin-bottom: 12px; }
+
+  /* Scroll to top */
+  .scroll-top { bottom: 20px; right: 16px; width: 42px; height: 42px; }
+
+  /* Buttons */
+  .cta-actions { flex-direction: column; align-items: center; }
+  .cta-actions .btn { width: 100%; max-width: 320px; justify-content: center; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   XS: 0–479px (Small phones)
+══════════════════════════════════════════════════════════ */
+@media (max-width: 479px) {
+  :root { --nav-h: 64px; }
+
+  /* Logo text hide */
+  .nav__logo-text { display: none; }
+
+  /* Hero stats: stack */
+  .hero__stats { grid-template-columns: 1fr; max-width: 280px; }
+
+  /* Team: single col */
+  .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+
+  /* Stats grid */
+  .stats-grid { grid-template-columns: 1fr; }
+
+  /* Service card */
+  .service-card { padding: 24px 20px; }
+
+  /* FAQ */
+  .faq-q { font-size: 0.875rem; }
+
+  /* Testimonial */
+  .testimonial-card { padding: 24px 20px; }
+
+  /* Pricing */
+  .pricing-card { padding: 28px 20px; }
+
+  /* Footer brand desc */
+  .footer__brand-desc { max-width: 100%; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   TOUCH / HOVER OVERRIDES
+══════════════════════════════════════════════════════════ */
+@media (hover: none) {
+  /* Remove hover transforms on touch devices for performance */
+  .card:hover,
+  .service-card:hover,
+  .pricing-card:hover,
+  .testimonial-card:hover,
+  .contact-info-card:hover { transform: none; }
+
+  .btn-primary:hover,
+  .btn-ghost:hover { transform: none; }
+
+  /* But keep active states for tap feedback */
+  .btn:active { transform: scale(0.97); }
+  .card:active { transform: scale(0.99); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   HIGH-DPI SCREENS
+══════════════════════════════════════════════════════════ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero__grid {
+    background-size: 40px 40px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   REDUCED MOTION
+══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   PRINT
+══════════════════════════════════════════════════════════ */
+@media print {
+  .nav, .cookies-banner, .scroll-top, .loading-screen,
+  .cursor-glow, .hero__scroll, .cta-section { display: none !important; }
+  body { color: #000; background: #fff; }
+  .hero { min-height: auto; background: #fff; }
+  .hero__title, h1, h2, h3 { color: #000 !important; -webkit-text-fill-color: #000 !important; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE NAV ANIMATION FIX
+══════════════════════════════════════════════════════════ */
+.nav__mobile {
+  /* Safe area for notched phones */
+  padding-bottom: calc(32px + env(safe-area-inset-bottom));
+}
+
+.nav__mobile-link {
+  /* Minimum touch target 48px */
+  min-height: 52px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FOCUS VISIBLE (Accessibility)
+══════════════════════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ══════════════════════════════════════════════════════════
+   SCROLLBAR STYLING
+══════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ══════════════════════════════════════════════════════════
+   SELECTION
+══════════════════════════════════════════════════════════ */
+::selection { background: rgba(0, 212, 255, 0.2); color: var(--text-primary); }

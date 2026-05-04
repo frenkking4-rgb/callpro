@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="az" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CallPro AZ haqqında — 2009-dan bəri Azərbaycanda aparıcı kol mərkəzi xidməti. Komandamız, missiyamız, dəyərlərimiz."/>
+  <title>Haqqımızda — CallPro AZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+  <style>
+    /* ── Timeline ── */
+    .timeline { position: relative; padding: 0; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: clamp(20px, 4vw, 40px);
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-3), transparent);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: clamp(56px, 8vw, 96px) 1fr;
+      gap: clamp(16px, 3vw, 32px);
+      margin-bottom: clamp(28px, 4vw, 48px);
+      position: relative;
+    }
+    .timeline-year {
+      text-align: center;
+      padding-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-year-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(40px, 6vw, 56px);
+      height: clamp(40px, 6vw, 56px);
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+      color: var(--accent);
+      box-shadow: 0 0 0 6px var(--bg);
+    }
+    .timeline-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 3vw, 32px);
+      transition: all var(--dur-med) var(--ease);
+    }
+    .timeline-content:hover { border-color: rgba(0,212,255,0.25); transform: translateX(4px); }
+    .timeline-content h3 { font-size: clamp(1rem, 1.8vw, 1.2rem); margin-bottom: 8px; }
+    .timeline-content p  { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ── Values ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 2.5vw, 28px);
+    }
+    .value-card {
+      padding: clamp(24px, 3.5vw, 40px);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all var(--dur-med) var(--ease);
+    }
+    .value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(0,212,255,0.2); }
+    .value-icon { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; display: block; }
+    .value-card h3 { font-size: clamp(1rem, 1.8vw, 1.2rem); margin-bottom: 10px; }
+    .value-card p  { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ── Team ── */
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.5vw, 28px); }
+    .team-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 3vw, 32px);
+      text-align: center;
+      transition: all var(--dur-med) var(--ease);
+    }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(0,212,255,0.2); }
+    .team-card__avatar {
+      width: clamp(64px, 10vw, 88px);
+      height: clamp(64px, 10vw, 88px);
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800; color: #fff;
+      position: relative;
+    }
+    .team-card__avatar::after {
+      content: '';
+      position: absolute; inset: -3px;
+      border-radius: 50%;
+      background: var(--grad-accent);
+      z-index: -1;
+    }
+    .team-card__name { font-weight: 700; font-size: clamp(0.9rem, 1.5vw, 1rem); margin-bottom: 4px; }
+    .team-card__role { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
+    .team-card__bio  { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ── Awards ── */
+    .awards-row {
+      display: flex; flex-wrap: wrap; gap: clamp(12px, 2vw, 20px);
+      justify-content: center; margin-top: 48px;
+    }
+    .award-badge {
+      display: flex; align-items: center; gap: 12px;
+      padding: clamp(12px, 2vw, 16px) clamp(16px, 3vw, 24px);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: all var(--dur-fast);
+    }
+    .award-badge:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .award-badge__icon { font-size: 1.5rem; }
+    .award-badge__text { font-size: 0.85rem; }
+    .award-badge__text strong { display: block; font-weight: 700; }
+    .award-badge__text span   { color: var(--text-muted); font-size: 0.78rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1023px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px)  { .values-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 639px)  { .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; } }
+  </style>
+</head>
+<body>
+<div class="loading-screen">
+  <div class="loading-logo">
+    <div class="loading-mark"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="13" r="7" stroke="white" stroke-width="2.5"/><circle cx="23" cy="24" r="3" fill="white"/></svg></div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+<div class="cursor-glow"></div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="container"><div class="nav__inner">
+    <a href="index.html" class="nav__logo"><div class="nav__logo-mark"></div><span class="nav__logo-text">Call<span>Pro</span> AZ</span></a>
+    <ul class="nav__menu">
+      <li><a href="index.html"    class="nav__link" data-i18n="nav_home">Ana Səhifə</a></li>
+      <li><a href="services.html" class="nav__link" data-i18n="nav_services">Xidmətlər</a></li>
+      <li><a href="about.html"    class="nav__link" data-i18n="nav_about">Haqqımızda</a></li>
+      <li><a href="pricing.html"  class="nav__link" data-i18n="nav_pricing">Qiymətlər</a></li>
+      <li><a href="contact.html"  class="nav__link" data-i18n="nav_contact">Əlaqə</a></li>
+    </ul>
+    <div class="nav__controls">
+      <div class="lang-selector">
+        <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="lang-dropdown">
+          <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+          <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+          <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+        </div>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+        <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="contact.html" class="btn btn-primary btn-sm nav__cta" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
+    </div>
+    <button class="nav__hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div></div>
+  <div class="nav__progress"></div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html"    class="nav__mobile-link" data-i18n="nav_home">Ana Səhifə <span>→</span></a>
+  <a href="services.html" class="nav__mobile-link" data-i18n="nav_services">Xidmətlər <span>→</span></a>
+  <a href="about.html"    class="nav__mobile-link" data-i18n="nav_about">Haqqımızda <span>→</span></a>
+  <a href="pricing.html"  class="nav__mobile-link" data-i18n="nav_pricing">Qiymətlər <span>→</span></a>
+  <a href="contact.html"  class="nav__mobile-link" data-i18n="nav_contact">Əlaqə <span>→</span></a>
+  <div class="nav__mobile-controls">
+    <div class="lang-selector">
+      <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lang-dropdown">
+        <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+        <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+        <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+      </div>
+    </div>
+    <button class="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg></button>
+    <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center" data-i18n="nav_cta">Konsultasiya</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="hero__grid"></div>
+  <div class="container page-hero__content">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav_home">Ana Səhifə</a><span>›</span>
+      <span data-i18n="nav_about">Haqqımızda</span>
+    </div>
+    <span class="label reveal" style="color:rgba(0,212,255,0.8)" data-i18n="about_label">Haqqımızda</span>
+    <h1 class="display-lg reveal stagger-1" style="color:#fff;margin:16px 0" data-i18n="about_title">Azərbaycanın Aparıcı Kol Mərkəzi</h1>
+    <p class="reveal stagger-2" data-i18n="about_desc">2009-cu ildən bəri 500-dən çox biznesə professsional kol mərkəzi xidmətləri göstəririk.</p>
+  </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section class="section">
+  <div class="container">
+    <div class="about-split grid grid-2">
+      <div class="card reveal-left" style="border-left:3px solid var(--accent)">
+        <div style="font-size:2.5rem;margin-bottom:20px">🎯</div>
+        <h2 class="display-sm" style="margin-bottom:16px" data-i18n="about_mission_t">Missiyamız</h2>
+        <p style="color:var(--text-secondary);line-height:1.75;font-size:1rem" data-i18n="about_mission_d">Azərbaycanda biznesləri dünya standartlarında müştəri xidməti ilə gücləndirmək, onların böyümə yolculuqlarında etibarlı tərəfdaş olmaq.</p>
+      </div>
+      <div class="card reveal-right" style="border-left:3px solid var(--accent-3)">
+        <div style="font-size:2.5rem;margin-bottom:20px">🔭</div>
+        <h2 class="display-sm" style="margin-bottom:16px" data-i18n="about_vision_t">Vizyonumuz</h2>
+        <p style="color:var(--text-secondary);line-height:1.75;font-size:1rem" data-i18n="about_vision_d">Regionun ən etibarlı və innovativ kol mərkəzi şirkəti olmaq; texnologiya və insan amillərini mükəmməl şəkildə birləşdirmək.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal stagger-1"><div class="stat-num">2009</div><div class="stat-label">Quruluş ili</div></div>
+      <div class="stat-item reveal stagger-2"><div class="stat-num" data-i18n="stats_1">500+</div><div class="stat-label" data-i18n="stats_1l">Aktiv Müştəri</div></div>
+      <div class="stat-item reveal stagger-3"><div class="stat-num">350+</div><div class="stat-label">Sertifikatlı Operator</div></div>
+      <div class="stat-item reveal stagger-4"><div class="stat-num">15+</div><div class="stat-label">İl Təcrübə</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY TIMELINE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label reveal">Tarixçəmiz</span>
+      <h2 class="display-md reveal stagger-1">Böyümə Yolculuğumuz</h2>
+      <p class="reveal stagger-2">2009-dan bu günə qədər keçdiyimiz yol.</p>
+    </div>
+    <div style="max-width:720px;margin:0 auto">
+      <div class="timeline">
+        <div class="timeline-item reveal stagger-1">
+          <div class="timeline-year"><div class="timeline-year-num">2009</div></div>
+          <div class="timeline-content"><h3>Quruluş</h3><p>CallPro AZ Bakıda 12 operatorla fəaliyyətə başladı. İlk müştərimiz yerli bank sektoru oldu.</p></div>
+        </div>
+        <div class="timeline-item reveal stagger-2">
+          <div class="timeline-year"><div class="timeline-year-num">2013</div></div>
+          <div class="timeline-content"><h3>100 Müştəri</h3><p>100-cü müştərimizlə xidmət genişləndi. Çıxan zəng departamenti yaradıldı.</p></div>
+        </div>
+        <div class="timeline-item reveal stagger-3">
+          <div class="timeline-year"><div class="timeline-year-num">2016</div></div>
+          <div class="timeline-content"><h3>ISO 9001 Sertifikatı</h3><p>Keyfiyyət menecmenti sistemimiz beynəlxalq ISO 9001:2015 sertifikatını aldı.</p></div>
+        </div>
+        <div class="timeline-item reveal stagger-4">
+          <div class="timeline-year"><div class="timeline-year-num">2019</div></div>
+          <div class="timeline-content"><h3>Texnoloji İnkişaf</h3><p>Süni intellekt əsaslı zəng analitika platformamız işə salındı. CRM inteqrasiyası genişləndi.</p></div>
+        </div>
+        <div class="timeline-item reveal stagger-5">
+          <div class="timeline-year"><div class="timeline-year-num">2022</div></div>
+          <div class="timeline-content"><h3>Regionda Lider</h3><p>Gürcüstan və Ukraynada nümayəndəliklər açıldı. 300+ operator ilə regional liderlik qazanıldı.</p></div>
+        </div>
+        <div class="timeline-item reveal stagger-6">
+          <div class="timeline-year"><div class="timeline-year-num">2025</div></div>
+          <div class="timeline-content"><h3>500+ Müştəri</h3><p>500-cü müştərimizlə yeni rekord qırıldı. AI-destəkli operator köməkçisi tətbiq edildi.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section" style="background:var(--bg-card)">
+  <div class="container">
+    <div class="section-header">
+      <span class="label reveal">Dəyərlərimiz</span>
+      <h2 class="display-md reveal stagger-1">Bizi Biz Edən Prinsiplər</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal stagger-1">
+        <span class="value-icon">🤝</span>
+        <h3>Etibarlılıq</h3>
+        <p>Hər söz tutulur. Müştərilərimizə verdiyimiz vədlər borcumuzdur.</p>
+      </div>
+      <div class="value-card reveal stagger-2">
+        <span class="value-icon">⚡</span>
+        <h3>Sürət</h3>
+        <p>Hər saniyə dəyərlidir. Sürətli cavab, sürətli həll — bu bizim standartımızdır.</p>
+      </div>
+      <div class="value-card reveal stagger-3">
+        <span class="value-icon">🏆</span>
+        <h3>Keyfiyyət</h3>
+        <p>Hər zəng üçün eyni yüksək standart. ISO sertifikatlı proseslərimiz bunu təmin edir.</p>
+      </div>
+      <div class="value-card reveal stagger-4">
+        <span class="value-icon">🌱</span>
+        <h3>İnkişaf</h3>
+        <p>Daim öyrənirik, inkişaf edirik. Sənayedəki ən son texnologiyaları tətbiq edirik.</p>
+      </div>
+      <div class="value-card reveal stagger-5">
+        <span class="value-icon">🔒</span>
+        <h3>Gizlilik</h3>
+        <p>Müştəri məlumatlarının qorunması ən yüksək prioritetimizdir. GDPR tam uyğun.</p>
+      </div>
+      <div class="value-card reveal stagger-6">
+        <span class="value-icon">❤️</span>
+        <h3>Empati</h3>
+        <p>Hər müştəriyə insan kimi yanaşırıq. Operatorlarımız dinləməyi bilir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label reveal" data-i18n="about_team_title">Komandamız</span>
+      <h2 class="display-md reveal stagger-1" data-i18n="about_team_title">Komandamız</h2>
+      <p class="reveal stagger-2" data-i18n="about_team_desc">Peşəkar mütəxəssislərdən ibarət komandamızla tanış olun.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal stagger-1">
+        <div class="team-card__avatar" style="background:var(--grad-accent)">K</div>
+        <div class="team-card__name">Kamran Rzayev</div>
+        <div class="team-card__role">CEO & Qurucu</div>
+        <div class="team-card__bio">15 illik kol mərkəzi təcrübəsi. Azərbaycanda sektoru formalaşdıran liderlərdən biri.</div>
+      </div>
+      <div class="team-card reveal stagger-2">
+        <div class="team-card__avatar" style="background:var(--grad-warm)">N</div>
+        <div class="team-card__name">Nigar Əliyeva</div>
+        <div class="team-card__role">COO — Əməliyyatlar</div>
+        <div class="team-card__bio">Əməliyyat mükəmməlliyi üzrə mütəxəssis. 300+ operator komandanı idarə edir.</div>
+      </div>
+      <div class="team-card reveal stagger-3">
+        <div class="team-card__avatar" style="background:linear-gradient(135deg,#7B2FFF,#00D4FF)">S</div>
+        <div class="team-card__name">Samir Hüseynov</div>
+        <div class="team-card__role">CTO — Texnologiya</div>
+        <div class="team-card__bio">Texnoloji altyapının memarı. AI əsaslı analitika platformamızın yaradıcısı.</div>
+      </div>
+      <div class="team-card reveal stagger-4">
+        <div class="team-card__avatar" style="background:linear-gradient(135deg,#FF3D6B,#7B2FFF)">L</div>
+        <div class="team-card__name">Leyla Məmmədova</div>
+        <div class="team-card__role">Müştəri Münasibətləri</div>
+        <div class="team-card__bio">Müştəri məmnuniyyəti şampionamız. 5 ildə NPS skorunu 40 puan artırdı.</div>
+      </div>
+      <div class="team-card reveal stagger-5">
+        <div class="team-card__avatar" style="background:linear-gradient(135deg,#22c55e,#00D4FF)">R</div>
+        <div class="team-card__name">Rauf Quliyev</div>
+        <div class="team-card__role">Satış Direktoru</div>
+        <div class="team-card__bio">B2B satış üzrə ekspert. Son 3 ildə müştəri bazasını 3x artırdı.</div>
+      </div>
+      <div class="team-card reveal stagger-6">
+        <div class="team-card__avatar" style="background:linear-gradient(135deg,#fb923c,#FF3D6B)">A</div>
+        <div class="team-card__name">Aytac Babayeva</div>
+        <div class="team-card__role">Keyfiyyət & Təlim</div>
+        <div class="team-card__bio">Operator təhsili proqramlarımızın rəhbəri. ISO 9001 audit koordinatoru.</div>
+      </div>
+      <div class="team-card reveal stagger-1">
+        <div class="team-card__avatar" style="background:linear-gradient(135deg,#14b8a6,#7B2FFF)">T</div>
+        <div class="team-card__name">Tural İsmayılov</div>
+        <div class="team-card__role">IT İnteqrasiya</div>
+        <div class="team-card__bio">CRM inteqrasiya layihələrinin texnik rəhbəri. 50+ uğurlu inteqrasiya.</div>
+      </div>
+      <div class="team-card reveal stagger-2">
+        <div class="team-card__avatar" style="background:linear-gradient(135deg,#FBBF24,#fb923c)">G</div>
+        <div class="team-card__name">Günay Rəhimova</div>
+        <div class="team-card__role">HR & İnsan Kapitalı</div>
+        <div class="team-card__bio">Komandamızın böyüdülməsinin arxasındakı güc. İstehlakçı xidməti HR mütəxəssisi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section--sm" style="background:var(--bg-card)">
+  <div class="container">
+    <div class="section-header">
+      <span class="label reveal">Nailiyyətlər</span>
+      <h2 class="display-md reveal stagger-1">Tanınmış Uğurlarımız</h2>
+    </div>
+    <div class="awards-row">
+      <div class="award-badge reveal stagger-1">
+        <div class="award-badge__icon">🏆</div>
+        <div class="award-badge__text"><strong>Ən Yaxşı Kol Mərkəzi</strong><span>Azərbaycan Business Awards 2024</span></div>
+      </div>
+      <div class="award-badge reveal stagger-2">
+        <div class="award-badge__icon">🎖</div>
+        <div class="award-badge__text"><strong>ISO 9001:2015</strong><span>Keyfiyyət Menecmenti</span></div>
+      </div>
+      <div class="award-badge reveal stagger-3">
+        <div class="award-badge__icon">⭐</div>
+        <div class="award-badge__text"><strong>Top CX Provider</strong><span>CX Excellence Awards 2023</span></div>
+      </div>
+      <div class="award-badge reveal stagger-4">
+        <div class="award-badge__icon">🌟</div>
+        <div class="award-badge__text"><strong>Best Employer</strong><span>HR Awards Azerbaijan 2022</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="container cta-section__content">
+    <span class="label reveal" style="color:rgba(0,212,255,0.8)">Bizimlə işləyin</span>
+    <h2 class="display-md reveal stagger-1" data-i18n="cta_title">Biznesinizi Növbəti Səviyyəyə Çıxarın</h2>
+    <p class="reveal stagger-2" data-i18n="cta_desc">Pulsuz konsultasiya alın, 30 günlük sınaq müddəti ilə başlayın.</p>
+    <div class="cta-actions reveal stagger-3">
+      <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="cta_btn1">Pulsuz Başlayın</a>
+      <a href="services.html" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff" data-i18n="nav_services">Xidmətlər</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="nav__logo"><div class="nav__logo-mark"></div><span class="nav__logo-text" style="color:#fff">Call<span>Pro</span> AZ</span></a>
+        <p class="footer__brand-desc" data-i18n="footer_desc">Azərbaycanın aparıcı kol mərkəzi xidmətleri. 7/24 peşəkar dəstək.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social">in</a><a href="#" class="footer__social">f</a><a href="#" class="footer__social">📷</a><a href="#" class="footer__social">✈</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col1">Xidmətlər</div>
+        <ul class="footer__links">
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l1">Daxil olan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l2">Çıxan Zənglər</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l3">Texniki Dəstək</a></li>
+          <li><a href="services.html" class="footer__link" data-i18n="footer_l4">CRM İnteqrasiya</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col2">Şirkət</div>
+        <ul class="footer__links">
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m1">Haqqımızda</a></li>
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m2">Komanda</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m3">Karyera</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_m4">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer_col3">Dəstək</div>
+        <ul class="footer__links">
+          <li><a href="contact.html" class="footer__link" data-i18n="nav_contact">Əlaqə</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n4">Siyasət</a></li>
+          <li><a href="#"            class="footer__link" data-i18n="footer_n5">Şərtlər</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copyright" data-i18n="footer_copy">© 2025 CallPro AZ. Bütün hüquqlar qorunur.</span>
+      <div class="footer__legal">
+        <a href="#" data-i18n="footer_priv">Məxfilik</a>
+        <a href="#" data-i18n="footer_terms">Şərtlər</a>
+        <a href="#" data-i18n="footer_cookies">Kukilər</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies-banner">
+  <p data-i18n="cookie_text">Saytımız kukilər istifadə edir.</p>
+  <div class="cookies-actions">
+    <button class="btn btn-sm btn-ghost cookie-decline" data-i18n="cookie_decline">İmtina et</button>
+    <button class="btn btn-sm btn-primary cookie-accept" data-i18n="cookie_accept">Qəbul et</button>
+  </div>
+</div>
+<button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<script src="js/translations.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
