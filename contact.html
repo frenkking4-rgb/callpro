@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="CallPro AZ ilə əlaqə — Sorğu göndərin, konsultasiya alın, bizimlə danışın."/>
-  <title>Əlaqə — CallPro AZ</title>
+  <meta name="description" data-i18n="page_description_contact" content="CallPro AZ ilə əlaqə — Sorğu göndərin, konsultasiya alın, bizimlə danışın."/>
+  <title data-i18n="page_title_contact">Əlaqə — CallPro AZ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -113,6 +113,9 @@
     .form-nav { display: flex; gap: 12px; margin-top: 28px; justify-content: flex-end; }
     .form-nav .btn-prev { color: var(--text-secondary); }
 
+    /* ── Telegram config hide ── */
+    .telegram-config { display: none !important; }
+
     /* ── Map placeholder ── */
     .map-wrap {
       margin-top: clamp(60px, 8vw, 120px);
@@ -153,10 +156,36 @@
     @media (max-width: 1023px) {
       .contact-layout { grid-template-columns: 1fr; }
       .contact-info { position: static; }
+      .contact-info-card {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .contact-info-icon { margin-top: 4px; }
+      .radio-cards { grid-template-columns: 1fr; }
+      .map-wrap { margin-top: 48px; height: auto; min-height: 280px; }
+    }
+    @media (max-width: 767px) {
+      .contact-page { padding: clamp(40px, 8vw, 80px) 0; }
+      .contact-info-card { padding: 16px; }
+      .social-strip { justify-content: flex-start; gap: 10px; }
+      .contact-form-card { padding: 24px 18px; }
+      .form-nav { flex-direction: column; align-items: stretch; }
+      .form-nav .btn { width: 100%; }
     }
     @media (max-width: 639px) {
-      .radio-cards { grid-template-columns: 1fr; }
-      .contact-form-card { padding: 24px 18px; }
+      .contact-page { padding: clamp(32px, 8vw, 64px) 0; }
+      .contact-info-card { gap: 12px; }
+      .map-wrap { padding: 24px; }
+      .form-nav { margin-top: 24px; }
+      .form-nav .btn { justify-content: center; }
+    }
+    @media (max-width: 479px) {
+      .contact-layout { gap: 24px; }
+      .contact-info-title { font-size: 0.85rem; }
+      .contact-info-value { font-size: 0.82rem; }
+      .radio-card-label { padding: 12px 14px; }
+      .contact-form-card { padding: 20px 16px; }
+      .map-wrap { margin-top: 32px; min-height: 220px; }
     }
   </style>
 </head>
@@ -294,15 +323,15 @@
             <div class="form-steps" id="formSteps">
               <div class="form-step active" data-step="1">
                 <div class="form-step__circle">01</div>
-                <div class="form-step__label">Məlumat</div>
+                <div class="form-step__label" data-i18n="form_step_label_1">Əlaqə</div>
               </div>
               <div class="form-step" data-step="2">
                 <div class="form-step__circle">02</div>
-                <div class="form-step__label">Xidmət</div>
+                <div class="form-step__label" data-i18n="form_step_label_2">Xidmət</div>
               </div>
               <div class="form-step" data-step="3">
                 <div class="form-step__circle">03</div>
-                <div class="form-step__label">Detallar</div>
+                <div class="form-step__label" data-i18n="form_step_label_3">Detallar</div>
               </div>
             </div>
           </div>
@@ -312,46 +341,46 @@
             <div class="form-step-panels" id="stepPanels">
               <div class="active" id="panel1">
                 <h3 style="font-size:1.1rem;margin-bottom:6px" data-i18n="form_title">Sorğu Göndərin</h3>
-                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px">Addım 1 / 3 — Əlaqə məlumatlarınız</p>
+                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px" data-i18n="form_step_info_1">Addım 1 / 3 — Əlaqə məlumatlarınız</p>
                 <div class="form-grid form-grid-2">
                   <div class="form-group">
                     <label class="form-label" for="fname" data-i18n="form_name">Ad Soyad <span>*</span></label>
-                    <input class="form-control" id="fname" name="name" type="text" placeholder="Elçin Məmmədov" required/>
+                    <input class="form-control" id="fname" name="name" type="text" placeholder="Elçin Məmmədov" data-i18n="form_name" required/>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="fcompany" data-i18n="form_company">Şirkət adı</label>
-                    <input class="form-control" id="fcompany" name="company" type="text" placeholder="TechStart Bakı"/>
+                    <input class="form-control" id="fcompany" name="company" type="text" placeholder="TechStart Bakı" data-i18n="form_company"/>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="fphone" data-i18n="form_phone">Telefon <span>*</span></label>
-                    <input class="form-control" id="fphone" name="phone" type="tel" placeholder="+994 70 000 00 00" required/>
+                    <input class="form-control" id="fphone" name="phone" type="tel" placeholder="+994 70 000 00 00" data-i18n="form_phone" required/>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="femail" data-i18n="form_email">E-mail <span>*</span></label>
-                    <input class="form-control" id="femail" name="email" type="email" placeholder="elchin@company.az" required/>
+                    <input class="form-control" id="femail" name="email" type="email" placeholder="elchin@company.az" data-i18n="form_email" required/>
                   </div>
                 </div>
                 <div class="form-nav">
-                  <button class="btn btn-primary" id="nextBtn1">Növbəti <span>→</span></button>
+                  <button class="btn btn-primary" id="nextBtn1"><span data-i18n="form_next">Növbəti →</span></button>
                 </div>
               </div>
 
               <!-- STEP 2: Service -->
               <div id="panel2">
-                <h3 style="font-size:1.1rem;margin-bottom:6px">Xidmət seçin</h3>
-                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px">Addım 2 / 3 — Hansı xidmətlə maraqlanırsınız?</p>
+                <h3 style="font-size:1.1rem;margin-bottom:6px" data-i18n="form_select_service_title">Xidmət seçin</h3>
+                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px" data-i18n="form_step_info_2">Addım 2 / 3 — Hansı xidmətlə maraqlanırsınız?</p>
                 <div class="radio-cards">
                   <label class="radio-card">
                     <input type="radio" name="service" value="inbound" checked/>
-                    <div class="radio-card-label"><div class="icon">📞</div><strong data-i18n="svc_1_title">Daxil olan Zənglər</strong><span>Müştəri dəstəyi</span></div>
+                    <div class="radio-card-label"><div class="icon">📞</div><strong data-i18n="svc_1_title">Daxil olan Zənglər</strong><span data-i18n="svc_1_tag">Müştəri dəstəyi</span></div>
                   </label>
                   <label class="radio-card">
                     <input type="radio" name="service" value="outbound"/>
-                    <div class="radio-card-label"><div class="icon">📤</div><strong data-i18n="svc_2_title">Çıxan Zənglər</strong><span>Satış kampaniyası</span></div>
+                    <div class="radio-card-label"><div class="icon">📤</div><strong data-i18n="svc_2_title">Çıxan Zənglər</strong><span data-i18n="svc_2_tag">Satış kampaniyası</span></div>
                   </label>
                   <label class="radio-card">
                     <input type="radio" name="service" value="techsupport"/>
-                    <div class="radio-card-label"><div class="icon">🛠</div><strong data-i18n="svc_3_title">Texniki Dəstək</strong><span>IT yardım masası</span></div>
+                    <div class="radio-card-label"><div class="icon">🛠</div><strong data-i18n="svc_3_title">Texniki Dəstək</strong><span data-i18n="svc_3_tag">IT yardım masası</span></div>
                   </label>
                   <label class="radio-card">
                     <input type="radio" name="service" value="crm"/>
@@ -359,23 +388,23 @@
                   </label>
                   <label class="radio-card">
                     <input type="radio" name="service" value="analytics"/>
-                    <div class="radio-card-label"><div class="icon">📊</div><strong data-i18n="svc_6_title">Analitika</strong><span>Dashboard & Hesabat</span></div>
+                    <div class="radio-card-label"><div class="icon">📊</div><strong data-i18n="svc_6_title">Analitika</strong><span data-i18n="svc_6_tag">Dashboard & Hesabat</span></div>
                   </label>
                   <label class="radio-card">
                     <input type="radio" name="service" value="full"/>
-                    <div class="radio-card-label"><div class="icon">🏢</div><strong>Kompleks Həll</strong><span>Hamısı birlikdə</span></div>
+                    <div class="radio-card-label"><div class="icon">🏢</div><strong data-i18n="svc_full_title">Kompleks Həll</strong><span data-i18n="svc_full_tag">Hamısı birlikdə</span></div>
                   </label>
                 </div>
                 <div class="form-nav">
-                  <button class="btn btn-ghost btn-prev" id="prevBtn2">← Geri</button>
-                  <button class="btn btn-primary" id="nextBtn2">Növbəti →</button>
+                  <button class="btn btn-ghost btn-prev" id="prevBtn2"><span data-i18n="form_prev">← Geri</span></button>
+                  <button class="btn btn-primary" id="nextBtn2"><span data-i18n="form_next">Növbəti →</span></button>
                 </div>
               </div>
 
               <!-- STEP 3: Details -->
               <div id="panel3">
-                <h3 style="font-size:1.1rem;margin-bottom:6px">Əlavə detallar</h3>
-                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px">Addım 3 / 3 — Sizi daha yaxşı tanıyaq</p>
+                <h3 style="font-size:1.1rem;margin-bottom:6px" data-i18n="form_details_title">Əlavə detallar</h3>
+                <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:28px" data-i18n="form_step_info_3">Addım 3 / 3 — Sizi daha yaxşı tanıyaq</p>
 
                 <div class="form-group" style="margin-bottom:20px">
                   <label class="form-label" for="fcalls" data-i18n="form_calls">Aylıq zəng həcmi</label>
@@ -391,7 +420,7 @@
 
                 <div class="form-group" style="margin-bottom:20px">
                   <label class="form-label" for="fmsg" data-i18n="form_msg">Əlavə qeyd</label>
-                  <textarea class="form-control" id="fmsg" name="message" rows="4" placeholder="Biznesiniz haqqında qısa məlumat, xüsusi tələblər..."></textarea>
+                  <textarea class="form-control" id="fmsg" name="message" rows="4" placeholder="Biznesiniz haqqında qısa məlumat, xüsusi tələblər..." data-i18n="form_msg"></textarea>
                 </div>
 
                 <div class="form-group" style="margin-bottom:28px">
@@ -402,7 +431,7 @@
                 </div>
 
                 <div class="form-nav">
-                  <button class="btn btn-ghost btn-prev" id="prevBtn3">← Geri</button>
+                  <button class="btn btn-ghost btn-prev" id="prevBtn3"><span data-i18n="form_prev">← Geri</span></button>
                   <button class="btn btn-primary btn-submit" id="submitBtn">
                     <span class="btn-text" data-i18n="form_submit">Sorğu Göndər</span>
                     <span class="btn-loader"><div class="loader-ring"></div></span>
@@ -416,12 +445,29 @@
               <div class="form-success__icon">✅</div>
               <h3 data-i18n="form_success_t" style="font-size:1.3rem">Sorğunuz göndərildi!</h3>
               <p style="color:var(--text-secondary)" data-i18n="form_success_d">Ən qısa zamanda sizinlə əlaqə saxlayacağıq.</p>
-              <a href="index.html" class="btn btn-ghost" style="margin-top:8px">Ana Səhifəyə Qayıt</a>
+              <a href="index.html" class="btn btn-ghost" style="margin-top:8px" data-i18n="form_return_home">Ana Səhifəyə Qayıt</a>
             </div>
           </div>
         </div>
       </div>
 
+      <div class="telegram-config reveal" style="margin-top:24px;padding:20px;border:1px solid rgba(255,255,255,0.12);border-radius:18px;background:rgba(255,255,255,0.02);">
+        <details>
+          <summary style="cursor:pointer;font-weight:700;color:#fff" data-i18n="tg_setup_title">Telegram Bot Ayarları</summary>
+          <p style="margin:12px 0 18px;color:var(--text-secondary)" data-i18n="tg_setup_desc">Telegram bot token və chat ID daxil edin ki, hər yeni sorğu bu çatda görünsün.</p>
+          <div class="form-grid form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="tgToken" data-i18n="tg_bot_token">Bot Token</label>
+              <input class="form-control" id="tgToken" type="text" placeholder="123456789:ABCDEF..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tgChatId" data-i18n="tg_chat_id">Chat ID</label>
+              <input class="form-control" id="tgChatId" type="text" placeholder="-1001234567890" />
+            </div>
+          </div>
+          <p style="margin-top:12px;color:var(--text-secondary);font-size:0.9rem" data-i18n="tg_notice">Qeyd: bu məlumat yalnız sizin brauzerinizdə saxlanacaq.</p>
+        </details>
+      </div>
     </div>
 
     <!-- Map -->
@@ -429,9 +475,9 @@
       <div class="map-grid-bg"></div>
       <div class="map-content">
         <div class="map-pin">📍</div>
-        <div class="map-wrap-label">Bizim Ofis</div>
+        <div class="map-wrap-label" data-i18n="contact_map_label">Bizim Ofis</div>
         <div class="map-address">Bakı, Nərimanov rayonu, Tbilisi pr. 17, AZ1078</div>
-        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="margin-top:12px">Google Maps-da Aç ↗</a>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="margin-top:12px" data-i18n="contact_map_button">Google Maps-da Aç ↗</a>
       </div>
     </div>
   </div>
@@ -553,15 +599,104 @@ document.getElementById('prevBtn3')?.addEventListener('click', () => {
   steps[1].classList.add('active');
 });
 
-document.getElementById('submitBtn')?.addEventListener('click', async () => {
+document.getElementById('saveTelegramConfigBtn')?.addEventListener('click', () => {
+  const tokenField = document.getElementById('tgToken');
+  const chatField = document.getElementById('tgChatId');
+  const token = tokenField?.value.trim();
+  const chatId = chatField?.value.trim();
+  const T = window.TRANSLATIONS?.[APP.lang] || window.TRANSLATIONS?.az;
+  if (!token || !chatId) {
+    alert(T?.tg_alert_missing || 'Please enter bot token and chat ID.');
+    return;
+  }
+  localStorage.setItem('cp_tg_bot_token', token);
+  localStorage.setItem('cp_tg_chat_id', chatId);
+  alert(T?.tg_alert_saved || 'Telegram settings saved.');
+});
+
+function loadTelegramConfig() {
+  const tokenField = document.getElementById('tgToken');
+  const chatField = document.getElementById('tgChatId');
+  const savedToken = localStorage.getItem('cp_tg_bot_token') || '';
+  const savedChatId = localStorage.getItem('cp_tg_chat_id') || '';
+  if (tokenField) tokenField.value = savedToken;
+  if (chatField) chatField.value = savedChatId;
+}
+
+function collectFormData() {
+  const serviceValue = document.querySelector('input[name="service"]:checked')?.value || 'inbound';
+  const serviceLabels = {
+    inbound: window.TRANSLATIONS?.[APP.lang]?.svc_1_title || 'Inbound Calls',
+    outbound: window.TRANSLATIONS?.[APP.lang]?.svc_2_title || 'Outbound Calls',
+    techsupport: window.TRANSLATIONS?.[APP.lang]?.svc_3_title || 'Technical Support',
+    crm: window.TRANSLATIONS?.[APP.lang]?.svc_4_title || 'CRM Integration',
+    analytics: window.TRANSLATIONS?.[APP.lang]?.svc_6_title || 'Analytics',
+    full: window.TRANSLATIONS?.[APP.lang]?.svc_full_title || 'Full Solution',
+  };
+  return {
+    name: document.getElementById('fname')?.value.trim() || '',
+    company: document.getElementById('fcompany')?.value.trim() || '',
+    phone: document.getElementById('fphone')?.value.trim() || '',
+    email: document.getElementById('femail')?.value.trim() || '',
+    service: serviceLabels[serviceValue] || serviceLabels.inbound,
+    calls: document.getElementById('fcalls')?.value || '',
+    message: document.getElementById('fmsg')?.value.trim() || '',
+    page: window.location.pathname,
+    lang: APP.lang,
+  };
+}
+
+function buildTelegramText(formData) {
+  const T = window.TRANSLATIONS?.[APP.lang] || window.TRANSLATIONS?.az;
+  const lines = [
+    T?.tg_new_request_title || 'New request from website',
+    `${T?.tg_label_name || 'Name'}: ${formData.name}`,
+    `${T?.tg_label_company || 'Company'}: ${formData.company}`,
+    `${T?.tg_label_phone || 'Phone'}: ${formData.phone}`,
+    `${T?.tg_label_email || 'Email'}: ${formData.email}`,
+    `${T?.tg_label_service || 'Service'}: ${formData.service}`,
+    `${T?.tg_label_calls || 'Monthly calls'}: ${formData.calls}`,
+    `${T?.tg_label_message || 'Message'}: ${formData.message || '-'}`,
+    `${T?.tg_label_page || 'Page'}: ${formData.page}`,
+    `${T?.tg_label_language || 'Language'}: ${formData.lang.toUpperCase()}`,
+  ];
+  return lines.join('\n');
+}
+
+async function trySendTelegram(formData) {
+  const token = localStorage.getItem('cp_tg_bot_token');
+  const chatId = localStorage.getItem('cp_tg_chat_id');
+  if (!token || !chatId) return null;
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: buildTelegramText(formData), parse_mode: 'HTML' }),
+    });
+    return response.ok;
+  } catch (error) {
+    console.warn('Telegram send error:', error);
+    return false;
+  }
+}
+
+document.getElementById('submitBtn')?.addEventListener('click', async event => {
+  event.preventDefault();
   if (!validateStep(2)) return;
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
+  const formData = collectFormData();
+  const telegramSent = await trySendTelegram(formData);
   await new Promise(r => setTimeout(r, 1800));
   btn.classList.remove('loading');
   document.querySelector('.form-body').style.display = 'none';
   document.getElementById('formSuccess').classList.add('visible');
+  if (telegramSent === false) {
+    console.warn('Telegram göndərmə uğursuz oldu');
+  }
 });
+
+loadTelegramConfig();
 
 /* ── Range output ── */
 const callsInput = document.getElementById('fcalls');

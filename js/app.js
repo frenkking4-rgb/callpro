@@ -101,6 +101,19 @@ function applyLang(lang) {
       }
     }
   });
+
+  const titleEl = document.querySelector('title[data-i18n]');
+  if (!titleEl) {
+    const pageTitle = T.page_title;
+    if (pageTitle) document.title = pageTitle;
+  }
+  document.querySelectorAll('meta[data-i18n]').forEach(meta => {
+    const key = meta.dataset.i18n;
+    if (T[key] !== undefined) {
+      meta.setAttribute('content', T[key]);
+    }
+  });
+
   // Update html lang attr
   document.documentElement.lang = lang === 'az' ? 'az' : lang === 'ru' ? 'ru' : 'en';
 }

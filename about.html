@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="CallPro AZ haqqında — 2009-dan bəri Azərbaycanda aparıcı kol mərkəzi xidməti. Komandamız, missiyamız, dəyərlərimiz."/>
-  <title>Haqqımızda — CallPro AZ</title>
+  <meta name="description" data-i18n="page_description_about" content="CallPro AZ haqqında — 2009-dən bəri Azərbaycanda aparıcı kol mərkəzi xidməti. Komandamız, missiyamız, dəyərlərimiz."/>
+  <title data-i18n="page_title_about">Haqqımızda — CallPro AZ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="css/components.css"/>
   <link rel="stylesheet" href="css/responsive.css"/>
   <style>
-    /* ── Timeline ── */
     .timeline { position: relative; padding: 0; }
     .timeline::before {
       content: '';
@@ -63,7 +62,6 @@
     .timeline-content h3 { font-size: clamp(1rem, 1.8vw, 1.2rem); margin-bottom: 8px; }
     .timeline-content p  { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
 
-    /* ── Values ── */
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -82,7 +80,6 @@
     .value-card h3 { font-size: clamp(1rem, 1.8vw, 1.2rem); margin-bottom: 10px; }
     .value-card p  { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
 
-    /* ── Team ── */
     .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.5vw, 28px); }
     .team-card {
       background: var(--bg-card);
@@ -114,7 +111,6 @@
     .team-card__role { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
     .team-card__bio  { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
 
-    /* ── Awards ── */
     .awards-row {
       display: flex; flex-wrap: wrap; gap: clamp(12px, 2vw, 20px);
       justify-content: center; margin-top: 48px;
@@ -133,7 +129,6 @@
     .award-badge__text strong { display: block; font-weight: 700; }
     .award-badge__text span   { color: var(--text-muted); font-size: 0.78rem; }
 
-    /* ── Responsive ── */
     @media (max-width: 1023px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 767px)  { .values-grid { grid-template-columns: 1fr; } }
     @media (max-width: 639px)  { .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; } }
@@ -148,7 +143,6 @@
 </div>
 <div class="cursor-glow"></div>
 
-<!-- NAV -->
 <nav class="nav" id="mainNav">
   <div class="container"><div class="nav__inner">
     <a href="index.html" class="nav__logo"><div class="nav__logo-mark"></div><span class="nav__logo-text">Call<span>Pro</span> AZ</span></a>
@@ -198,7 +192,6 @@
   </div>
 </div>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="hero__orb hero__orb--1"></div>
   <div class="hero__orb hero__orb--2"></div>
@@ -214,7 +207,6 @@
   </div>
 </section>
 
-<!-- MISSION & VISION -->
 <section class="section">
   <div class="container">
     <div class="about-split grid grid-2">
@@ -232,100 +224,98 @@
   </div>
 </section>
 
-<!-- STATS -->
 <section class="stats-section">
   <div class="container">
     <div class="stats-grid">
-      <div class="stat-item reveal stagger-1"><div class="stat-num">2009</div><div class="stat-label">Quruluş ili</div></div>
+      <div class="stat-item reveal stagger-1"><div class="stat-num">2009</div><div class="stat-label" data-i18n="about_stat_foundation">Quruluş ili</div></div>
       <div class="stat-item reveal stagger-2"><div class="stat-num" data-i18n="stats_1">500+</div><div class="stat-label" data-i18n="stats_1l">Aktiv Müştəri</div></div>
-      <div class="stat-item reveal stagger-3"><div class="stat-num">350+</div><div class="stat-label">Sertifikatlı Operator</div></div>
-      <div class="stat-item reveal stagger-4"><div class="stat-num">15+</div><div class="stat-label">İl Təcrübə</div></div>
+      <div class="stat-item reveal stagger-3"><div class="stat-num">350+</div><div class="stat-label" data-i18n="about_stat_certified">Sertifikatlı Operator</div></div>
+      <div class="stat-item reveal stagger-4"><div class="stat-num">15+</div><div class="stat-label" data-i18n="about_stat_experience">İl Təcrübə</div></div>
     </div>
   </div>
 </section>
 
-<!-- HISTORY TIMELINE -->
+
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <span class="label reveal">Tarixçəmiz</span>
-      <h2 class="display-md reveal stagger-1">Böyümə Yolculuğumuz</h2>
-      <p class="reveal stagger-2">2009-dan bu günə qədər keçdiyimiz yol.</p>
+      <span class="label reveal" data-i18n="about_history_label">Tarixçəmiz</span>
+      <h2 class="display-md reveal stagger-1" data-i18n="about_history_title">Böyümə Yolculuğumuz</h2>
+      <p class="reveal stagger-2" data-i18n="about_history_desc">2009-dan bu günə qədər keçdiyimiz yol.</p>
     </div>
     <div style="max-width:720px;margin:0 auto">
       <div class="timeline">
         <div class="timeline-item reveal stagger-1">
           <div class="timeline-year"><div class="timeline-year-num">2009</div></div>
-          <div class="timeline-content"><h3>Quruluş</h3><p>CallPro AZ Bakıda 12 operatorla fəaliyyətə başladı. İlk müştərimiz yerli bank sektoru oldu.</p></div>
+          <div class="timeline-content"><h3 data-i18n="about_history_2009_title">Quruluş</h3><p data-i18n="about_history_2009_desc">CallPro AZ Bakıda 12 operatorla fəaliyyətə başladı. İlk müştərimiz yerli bank sektoru oldu.</p></div>
         </div>
         <div class="timeline-item reveal stagger-2">
           <div class="timeline-year"><div class="timeline-year-num">2013</div></div>
-          <div class="timeline-content"><h3>100 Müştəri</h3><p>100-cü müştərimizlə xidmət genişləndi. Çıxan zəng departamenti yaradıldı.</p></div>
+          <div class="timeline-content"><h3 data-i18n="about_history_2013_title">100 Müştəri</h3><p data-i18n="about_history_2013_desc">100-cü müştərimizlə xidmət genişləndi. Çıxan zəng departamenti yaradıldı.</p></div>
         </div>
         <div class="timeline-item reveal stagger-3">
           <div class="timeline-year"><div class="timeline-year-num">2016</div></div>
-          <div class="timeline-content"><h3>ISO 9001 Sertifikatı</h3><p>Keyfiyyət menecmenti sistemimiz beynəlxalq ISO 9001:2015 sertifikatını aldı.</p></div>
+          <div class="timeline-content"><h3 data-i18n="about_history_2016_title">ISO 9001 Sertifikatı</h3><p data-i18n="about_history_2016_desc">Keyfiyyət menecmenti sistemimiz beynəlxalq ISO 9001:2015 sertifikatını aldı.</p></div>
         </div>
         <div class="timeline-item reveal stagger-4">
           <div class="timeline-year"><div class="timeline-year-num">2019</div></div>
-          <div class="timeline-content"><h3>Texnoloji İnkişaf</h3><p>Süni intellekt əsaslı zəng analitika platformamız işə salındı. CRM inteqrasiyası genişləndi.</p></div>
+          <div class="timeline-content"><h3 data-i18n="about_history_2019_title">Texnoloji İnkişaf</h3><p data-i18n="about_history_2019_desc">Süni intellekt əsaslı zəng analitika platformamız işə salındı. CRM inteqrasiyası genişləndi.</p></div>
         </div>
         <div class="timeline-item reveal stagger-5">
           <div class="timeline-year"><div class="timeline-year-num">2022</div></div>
-          <div class="timeline-content"><h3>Regionda Lider</h3><p>Gürcüstan və Ukraynada nümayəndəliklər açıldı. 300+ operator ilə regional liderlik qazanıldı.</p></div>
+          <div class="timeline-content"><h3 data-i18n="about_history_2022_title">Regionda Lider</h3><p data-i18n="about_history_2022_desc">Gürcüstan və Ukraynada nümayəndəliklər açıldı. 300+ operator ilə regional liderlik qazanıldı.</p></div>
         </div>
         <div class="timeline-item reveal stagger-6">
           <div class="timeline-year"><div class="timeline-year-num">2025</div></div>
-          <div class="timeline-content"><h3>500+ Müştəri</h3><p>500-cü müştərimizlə yeni rekord qırıldı. AI-destəkli operator köməkçisi tətbiq edildi.</p></div>
+          <div class="timeline-content"><h3 data-i18n="about_history_2025_title">500+ Müştəri</h3><p data-i18n="about_history_2025_desc">500-cü müştərimizlə yeni rekord qırıldı. AI-destəkli operator köməkçisi tətbiq edildi.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VALUES -->
 <section class="section" style="background:var(--bg-card)">
   <div class="container">
     <div class="section-header">
-      <span class="label reveal">Dəyərlərimiz</span>
-      <h2 class="display-md reveal stagger-1">Bizi Biz Edən Prinsiplər</h2>
+      <span class="label reveal" data-i18n="about_values_label">Dəyərlərimiz</span>
+      <h2 class="display-md reveal stagger-1" data-i18n="about_values_title">Bizi Biz Edən Prinsiplər</h2>
     </div>
     <div class="values-grid">
       <div class="value-card reveal stagger-1">
         <span class="value-icon">🤝</span>
-        <h3>Etibarlılıq</h3>
-        <p>Hər söz tutulur. Müştərilərimizə verdiyimiz vədlər borcumuzdur.</p>
+        <h3 data-i18n="about_value_1_title">Etibarlılıq</h3>
+        <p data-i18n="about_value_1_desc">Hər söz tutulur. Müştərilərimizə verdiyimiz vədlər borcumuzdur.</p>
       </div>
       <div class="value-card reveal stagger-2">
         <span class="value-icon">⚡</span>
-        <h3>Sürət</h3>
-        <p>Hər saniyə dəyərlidir. Sürətli cavab, sürətli həll — bu bizim standartımızdır.</p>
+        <h3 data-i18n="about_value_2_title">Sürət</h3>
+        <p data-i18n="about_value_2_desc">Hər saniyə dəyərlidir. Sürətli cavab, sürətli həll — bu bizim standartımızdır.</p>
       </div>
       <div class="value-card reveal stagger-3">
         <span class="value-icon">🏆</span>
-        <h3>Keyfiyyət</h3>
-        <p>Hər zəng üçün eyni yüksək standart. ISO sertifikatlı proseslərimiz bunu təmin edir.</p>
+        <h3 data-i18n="about_value_3_title">Keyfiyyət</h3>
+        <p data-i18n="about_value_3_desc">Hər zəng üçün eyni yüksək standart. ISO sertifikatlı proseslərimiz bunu təmin edir.</p>
       </div>
       <div class="value-card reveal stagger-4">
         <span class="value-icon">🌱</span>
-        <h3>İnkişaf</h3>
-        <p>Daim öyrənirik, inkişaf edirik. Sənayedəki ən son texnologiyaları tətbiq edirik.</p>
+        <h3 data-i18n="about_value_4_title">İnkişaf</h3>
+        <p data-i18n="about_value_4_desc">Daim öyrənirik, inkişaf edirik. Sənayedəki ən son texnologiyaları tətbiq edirik.</p>
       </div>
       <div class="value-card reveal stagger-5">
         <span class="value-icon">🔒</span>
-        <h3>Gizlilik</h3>
-        <p>Müştəri məlumatlarının qorunması ən yüksək prioritetimizdir. GDPR tam uyğun.</p>
+        <h3 data-i18n="about_value_5_title">Gizlilik</h3>
+        <p data-i18n="about_value_5_desc">Müştəri məlumatlarının qorunması ən yüksək prioritetimizdir. GDPR tam uyğun.</p>
       </div>
       <div class="value-card reveal stagger-6">
         <span class="value-icon">❤️</span>
-        <h3>Empati</h3>
-        <p>Hər müştəriyə insan kimi yanaşırıq. Operatorlarımız dinləməyi bilir.</p>
+        <h3 data-i18n="about_value_6_title">Empati</h3>
+        <p data-i18n="about_value_6_desc">Hər müştəriyə insan kimi yanaşırıq. Operatorlarımız dinləməyi bilir.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TEAM -->
+
 <section class="section">
   <div class="container">
     <div class="section-header">
@@ -337,89 +327,87 @@
       <div class="team-card reveal stagger-1">
         <div class="team-card__avatar" style="background:var(--grad-accent)">K</div>
         <div class="team-card__name">Kamran Rzayev</div>
-        <div class="team-card__role">CEO & Qurucu</div>
-        <div class="team-card__bio">15 illik kol mərkəzi təcrübəsi. Azərbaycanda sektoru formalaşdıran liderlərdən biri.</div>
+        <div class="team-card__role" data-i18n="about_team_role_1">CEO & Qurucu</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_1">15 illik kol mərkəzi təcrübəsi. Azərbaycanda sektoru formalaşdıran liderlərdən biri.</div>
       </div>
       <div class="team-card reveal stagger-2">
         <div class="team-card__avatar" style="background:var(--grad-warm)">N</div>
         <div class="team-card__name">Nigar Əliyeva</div>
-        <div class="team-card__role">COO — Əməliyyatlar</div>
-        <div class="team-card__bio">Əməliyyat mükəmməlliyi üzrə mütəxəssis. 300+ operator komandanı idarə edir.</div>
+        <div class="team-card__role" data-i18n="about_team_role_2">COO — Əməliyyatlar</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_2">Əməliyyat mükəmməlliyi üzrə mütəxəssis. 300+ operator komandanı idarə edir.</div>
       </div>
       <div class="team-card reveal stagger-3">
         <div class="team-card__avatar" style="background:linear-gradient(135deg,#7B2FFF,#00D4FF)">S</div>
         <div class="team-card__name">Samir Hüseynov</div>
-        <div class="team-card__role">CTO — Texnologiya</div>
-        <div class="team-card__bio">Texnoloji altyapının memarı. AI əsaslı analitika platformamızın yaradıcısı.</div>
+        <div class="team-card__role" data-i18n="about_team_role_3">CTO — Texnologiya</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_3">Texnoloji altyapının memarı. AI əsaslı analitika platformamızın yaradıcısı.</div>
       </div>
       <div class="team-card reveal stagger-4">
         <div class="team-card__avatar" style="background:linear-gradient(135deg,#FF3D6B,#7B2FFF)">L</div>
         <div class="team-card__name">Leyla Məmmədova</div>
-        <div class="team-card__role">Müştəri Münasibətləri</div>
-        <div class="team-card__bio">Müştəri məmnuniyyəti şampionamız. 5 ildə NPS skorunu 40 puan artırdı.</div>
+        <div class="team-card__role" data-i18n="about_team_role_4">Müştəri Münasibətləri</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_4">Müştəri məmnuniyyəti şampionamız. 5 ildə NPS skorunu 40 puan artırdı.</div>
       </div>
       <div class="team-card reveal stagger-5">
         <div class="team-card__avatar" style="background:linear-gradient(135deg,#22c55e,#00D4FF)">R</div>
         <div class="team-card__name">Rauf Quliyev</div>
-        <div class="team-card__role">Satış Direktoru</div>
-        <div class="team-card__bio">B2B satış üzrə ekspert. Son 3 ildə müştəri bazasını 3x artırdı.</div>
+        <div class="team-card__role" data-i18n="about_team_role_5">Satış Direktoru</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_5">B2B satış üzrə ekspert. Son 3 ildə müştəri bazasını 3x artırdı.</div>
       </div>
       <div class="team-card reveal stagger-6">
         <div class="team-card__avatar" style="background:linear-gradient(135deg,#fb923c,#FF3D6B)">A</div>
         <div class="team-card__name">Aytac Babayeva</div>
-        <div class="team-card__role">Keyfiyyət & Təlim</div>
-        <div class="team-card__bio">Operator təhsili proqramlarımızın rəhbəri. ISO 9001 audit koordinatoru.</div>
+        <div class="team-card__role" data-i18n="about_team_role_6">Keyfiyyət & Təlim</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_6">Operator təhsili proqramlarımızın rəhbəri. ISO 9001 audit koordinatoru.</div>
       </div>
       <div class="team-card reveal stagger-1">
         <div class="team-card__avatar" style="background:linear-gradient(135deg,#14b8a6,#7B2FFF)">T</div>
         <div class="team-card__name">Tural İsmayılov</div>
-        <div class="team-card__role">IT İnteqrasiya</div>
-        <div class="team-card__bio">CRM inteqrasiya layihələrinin texnik rəhbəri. 50+ uğurlu inteqrasiya.</div>
+        <div class="team-card__role" data-i18n="about_team_role_7">IT İnteqrasiya</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_7">CRM inteqrasiya layihələrinin texnik rəhbəri. 50+ uğurlu inteqrasiya.</div>
       </div>
       <div class="team-card reveal stagger-2">
         <div class="team-card__avatar" style="background:linear-gradient(135deg,#FBBF24,#fb923c)">G</div>
         <div class="team-card__name">Günay Rəhimova</div>
-        <div class="team-card__role">HR & İnsan Kapitalı</div>
-        <div class="team-card__bio">Komandamızın böyüdülməsinin arxasındakı güc. İstehlakçı xidməti HR mütəxəssisi.</div>
+        <div class="team-card__role" data-i18n="about_team_role_8">HR & İnsan Kapitalı</div>
+        <div class="team-card__bio" data-i18n="about_team_bio_8">Komandamızın böyüdülməsinin arxasındakı güc. İstehlakçı xidməti HR mütəxəssisi.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AWARDS -->
 <section class="section--sm" style="background:var(--bg-card)">
   <div class="container">
     <div class="section-header">
-      <span class="label reveal">Nailiyyətlər</span>
-      <h2 class="display-md reveal stagger-1">Tanınmış Uğurlarımız</h2>
+      <span class="label reveal" data-i18n="about_awards_label">Nailiyyətlər</span>
+      <h2 class="display-md reveal stagger-1" data-i18n="about_awards_title">Tanınmış Uğurlarımız</h2>
     </div>
     <div class="awards-row">
       <div class="award-badge reveal stagger-1">
         <div class="award-badge__icon">🏆</div>
-        <div class="award-badge__text"><strong>Ən Yaxşı Kol Mərkəzi</strong><span>Azərbaycan Business Awards 2024</span></div>
+        <div class="award-badge__text"><strong data-i18n="about_award_1_title">Ən Yaxşı Kol Mərkəzi</strong><span data-i18n="about_award_1_sub">Azərbaycan Business Awards 2024</span></div>
       </div>
       <div class="award-badge reveal stagger-2">
         <div class="award-badge__icon">🎖</div>
-        <div class="award-badge__text"><strong>ISO 9001:2015</strong><span>Keyfiyyət Menecmenti</span></div>
+        <div class="award-badge__text"><strong data-i18n="about_award_2_title">ISO 9001:2015</strong><span data-i18n="about_award_2_sub">Keyfiyyət Menecmenti</span></div>
       </div>
       <div class="award-badge reveal stagger-3">
         <div class="award-badge__icon">⭐</div>
-        <div class="award-badge__text"><strong>Top CX Provider</strong><span>CX Excellence Awards 2023</span></div>
+        <div class="award-badge__text"><strong data-i18n="about_award_3_title">Top CX Provider</strong><span data-i18n="about_award_3_sub">CX Excellence Awards 2023</span></div>
       </div>
       <div class="award-badge reveal stagger-4">
         <div class="award-badge__icon">🌟</div>
-        <div class="award-badge__text"><strong>Best Employer</strong><span>HR Awards Azerbaijan 2022</span></div>
+        <div class="award-badge__text"><strong data-i18n="about_award_4_title">Best Employer</strong><span data-i18n="about_award_4_sub">HR Awards Azerbaijan 2022</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section">
   <div class="hero__orb hero__orb--1"></div>
   <div class="hero__orb hero__orb--2"></div>
   <div class="container cta-section__content">
-    <span class="label reveal" style="color:rgba(0,212,255,0.8)">Bizimlə işləyin</span>
+    <span class="label reveal" style="color:rgba(0,212,255,0.8)" data-i18n="about_cta_label">Bizimlə işləyin</span>
     <h2 class="display-md reveal stagger-1" data-i18n="cta_title">Biznesinizi Növbəti Səviyyəyə Çıxarın</h2>
     <p class="reveal stagger-2" data-i18n="cta_desc">Pulsuz konsultasiya alın, 30 günlük sınaq müddəti ilə başlayın.</p>
     <div class="cta-actions reveal stagger-3">
@@ -429,7 +417,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
