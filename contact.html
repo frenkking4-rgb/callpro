@@ -696,7 +696,11 @@ document.getElementById('submitBtn')?.addEventListener('click', async event => {
   if (formBody) formBody.style.display = 'none';
   
   const successBlock = document.getElementById('formSuccess');
-  if (successBlock) successBlock.classList.add('visible');
+  if (successBlock) {
+    successBlock.innerHTML = '<div style="text-align:center; font-size:2.5rem; font-weight:bold; color:#4dd0e1; padding:40px 0;">Success!</div>';
+    successBlock.style.display = 'block';
+    successBlock.classList.add('visible');
+  }
   
   if (telegramSent === false) {
     console.warn('Telegram göndərmə uğursuz oldu');
