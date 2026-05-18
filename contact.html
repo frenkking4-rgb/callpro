@@ -550,6 +550,7 @@ const steps = document.querySelectorAll('.form-step');
 let current = 0;
 
 function goTo(idx) {
+  if (!panels[current] || !panels[idx]) return;
   panels[current].classList.remove('active');
   steps[current].classList.remove('active');
   steps[current].classList.add('done');
@@ -561,12 +562,26 @@ function goTo(idx) {
     steps[i].classList.remove('active', 'done');
   }
   if (window.innerWidth < 768) {
-    document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelector('.contact-form-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
 function validateStep(panelIdx) {
+  if (panelIdx === 0) {
+    const name = document.getElementById('fname');
+    const phone = document.getElementById('fphone');
+    const email = document.getElementById('femail');
+    let valid = true;
+
+    if (!name || !name.value.trim()) { name?.classList.add('error'); valid = false; } else { name?.classList.remove('error'); }
+    if (!phone || !phone.value.trim()) { phone?.classList.add('error'); valid = false; } else { phone?.classList.remove('error'); }
+    if (!email || !email.value.trim()) { email?.classList.add('error'); valid = false; } else { email?.classList.remove('error'); }
+    
+    return valid;
+  }
+
   const panel = panels[panelIdx];
+  if (!panel) return true;
   const required = panel.querySelectorAll('[required]');
   let ok = true;
   required.forEach(f => {
@@ -577,11 +592,18 @@ function validateStep(panelIdx) {
   return ok;
 }
 
-document.getElementById('nextBtn1')?.addEventListener('click', () => {
+document.getElementById('nextBtn1')?.addEventListener('click', (e) => {
+  e.preventDefault();
   if (validateStep(0)) goTo(1);
 });
-document.getElementById('nextBtn2')?.addEventListener('click', () => goTo(2));
-document.getElementById('prevBtn2')?.addEventListener('click', () => {
+
+document.getElementById('nextBtn2')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  goTo(2);
+});
+
+document.getElementById('prevBtn2')?.addEventListener('click', (e) => {
+  e.preventDefault();
   panels[1].classList.remove('active');
   steps[1].classList.remove('active', 'done');
   steps[0].classList.remove('done');
@@ -589,7 +611,9 @@ document.getElementById('prevBtn2')?.addEventListener('click', () => {
   panels[0].classList.add('active');
   steps[0].classList.add('active');
 });
-document.getElementById('prevBtn3')?.addEventListener('click', () => {
+
+document.getElementById('prevBtn3')?.addEventListener('click', (e) => {
+  e.preventDefault();
   panels[2].classList.remove('active');
   steps[2].classList.remove('active', 'done');
   steps[1].classList.remove('done');
@@ -597,30 +621,6 @@ document.getElementById('prevBtn3')?.addEventListener('click', () => {
   panels[1].classList.add('active');
   steps[1].classList.add('active');
 });
-
-document.getElementById('saveTelegramConfigBtn')?.addEventListener('click', () => {
-  const tokenField = document.getElementById('tgToken');
-  const chatField = document.getElementById('tgChatId');
-  const token = tokenField?.value.trim();
-  const chatId = chatField?.value.trim();
-  const T = window.TRANSLATIONS?.[APP.lang] || window.TRANSLATIONS?.az;
-  if (!token || !chatId) {
-    alert(T?.tg_alert_missing || 'Please enter bot token and chat ID.');
-    return;
-  }
-  localStorage.setItem('cp_tg_bot_token', token);
-  localStorage.setItem('cp_tg_chat_id', chatId);
-  alert(T?.tg_alert_saved || 'Telegram settings saved.');
-});
-
-function loadTelegramConfig() {
-  const tokenField = document.getElementById('tgToken');
-  const chatField = document.getElementById('tgChatId');
-  const savedToken = localStorage.getItem('cp_tg_bot_token') || '';
-  const savedChatId = localStorage.getItem('cp_tg_chat_id') || '';
-  if (tokenField) tokenField.value = savedToken;
-  if (chatField) chatField.value = savedChatId;
-}
 
 function collectFormData() {
   const serviceValue = document.querySelector('input[name="service"]:checked')?.value || 'inbound';
@@ -641,23 +641,23 @@ function collectFormData() {
     calls: document.getElementById('fcalls')?.value || '',
     message: document.getElementById('fmsg')?.value.trim() || '',
     page: window.location.pathname,
-    lang: APP.lang,
+    lang: APP.lang || 'az',
   };
 }
 
 function buildTelegramText(formData) {
   const T = window.TRANSLATIONS?.[APP.lang] || window.TRANSLATIONS?.az;
   const lines = [
-    T?.tg_new_request_title || 'New request from website',
-    `${T?.tg_label_name || 'Name'}: ${formData.name}`,
-    `${T?.tg_label_company || 'Company'}: ${formData.company}`,
-    `${T?.tg_label_phone || 'Phone'}: ${formData.phone}`,
-    `${T?.tg_label_email || 'Email'}: ${formData.email}`,
-    `${T?.tg_label_service || 'Service'}: ${formData.service}`,
-    `${T?.tg_label_calls || 'Monthly calls'}: ${formData.calls}`,
-    `${T?.tg_label_message || 'Message'}: ${formData.message || '-'}`,
-    `${T?.tg_label_page || 'Page'}: ${formData.page}`,
-    `${T?.tg_label_language || 'Language'}: ${formData.lang.toUpperCase()}`,
+    `<b>${T?.tg_new_request_title || 'Yeni Müraciət'}</b>\n`,
+    `<b>${T?.tg_label_name || 'Ad Soyad'}:</b> ${formData.name}`,
+    `<b>${T?.tg_label_company || 'Şirkət'}:</b> ${formData.company || '-'}`,
+    `<b>${T?.tg_label_phone || 'Telefon'}:</b> ${formData.phone}`,
+    `<b>${T?.tg_label_email || 'E-mail'}:</b> ${formData.email}`,
+    `<b>${T?.tg_label_service || 'Xidmət'}:</b> ${formData.service}`,
+    `<b>${T?.tg_label_calls || 'Aylıq zəng'}:</b> ${formData.calls}`,
+    `<b>${T?.tg_label_message || 'Mesaj'}:</b> ${formData.message || '-'}`,
+    `<b>${T?.tg_label_page || 'Səhifə'}:</b> ${formData.page}`,
+    `<b>${T?.tg_label_language || 'Dil'}:</b> ${formData.lang.toUpperCase()}`,
   ];
   return lines.join('\n');
 }
@@ -689,22 +689,25 @@ document.getElementById('submitBtn')?.addEventListener('click', async event => {
   btn.classList.add('loading');
   const formData = collectFormData();
   const telegramSent = await trySendTelegram(formData);
-  await new Promise(r => setTimeout(r, 1800));
+  await new Promise(r => setTimeout(r, 1500));
   btn.classList.remove('loading');
-  document.querySelector('.form-body').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('visible');
+  
+  const formBody = document.querySelector('.form-body');
+  if (formBody) formBody.style.display = 'none';
+  
+  const successBlock = document.getElementById('formSuccess');
+  if (successBlock) successBlock.classList.add('visible');
+  
   if (telegramSent === false) {
     console.warn('Telegram göndərmə uğursuz oldu');
   }
 });
 
-loadTelegramConfig();
-
 const callsInput = document.getElementById('fcalls');
 const callsOutput = document.getElementById('callsOutput');
 callsInput?.addEventListener('input', () => {
   const v = parseInt(callsInput.value);
-  callsOutput.textContent = v >= 10000 ? '10,000+' : v.toLocaleString();
+  if (callsOutput) callsOutput.textContent = v >= 10000 ? '10,000+' : v.toLocaleString();
   const pct = (v - 100) / (10000 - 100) * 100;
   callsInput.style.background = `linear-gradient(to right, var(--accent) ${pct}%, var(--border) ${pct}%)`;
 });
