@@ -114,9 +114,7 @@
     .form-nav .btn-prev { color: var(--text-secondary); }
 
     /* ── Telegram config hide ── */
-    .telegram-config{
-      display: none !important;
-    }
+    .telegram-config { display: none !important; }
 
     /* ── Map placeholder ── */
     .map-wrap {
@@ -189,6 +187,8 @@
       .contact-form-card { padding: 20px 16px; }
       .map-wrap { margin-top: 32px; min-height: 220px; }
     }
+
+    
   </style>
 </head>
 <body>
@@ -208,7 +208,7 @@
       <li><a href="index.html"    class="nav__link" data-i18n="nav_home">Ana Səhifə</a></li>
       <li><a href="services.html" class="nav__link" data-i18n="nav_services">Xidmətlər</a></li>
       <li><a href="about.html"    class="nav__link" data-i18n="nav_about">Haqqımızda</a></li>
-      <!-- <li><a href="pricing.html"  class="nav__link" data-i18n="nav_pricing">Qiymətlər</a></li> -->
+      <!-- pricing link removed -->
       <li><a href="contact.html"  class="nav__link" data-i18n="nav_contact">Əlaqə</a></li>
     </ul>
     <div class="nav__controls">
@@ -234,7 +234,7 @@
   <a href="index.html"    class="nav__mobile-link" data-i18n="nav_home">Ana Səhifə <span>→</span></a>
   <a href="services.html" class="nav__mobile-link" data-i18n="nav_services">Xidmətlər <span>→</span></a>
   <a href="about.html"    class="nav__mobile-link" data-i18n="nav_about">Haqqımızda <span>→</span></a>
-  <a href="pricing.html"  class="nav__mobile-link" data-i18n="nav_pricing">Qiymətlər <span>→</span></a>
+  <!-- pricing mobile link removed -->
   <a href="contact.html"  class="nav__mobile-link" data-i18n="nav_contact">Əlaqə <span>→</span></a>
   <div class="nav__mobile-controls">
     <div class="lang-selector">
@@ -266,6 +266,11 @@
   </div>
 </section>
 
+<!-- Toast for localized success message -->
+<div id="toast" aria-live="polite" style="position:fixed;right:20px;bottom:20px;z-index:9999;display:none"> 
+  <div id="toastInner" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:12px 18px;border-radius:12px;box-shadow:var(--shadow-md);font-weight:600"></div>
+</div>
+
 <!-- CONTACT SECTION -->
 <section class="contact-page">
   <div class="container">
@@ -291,13 +296,7 @@
               <div class="contact-info-value"><a href="mailto:info@callpro.az" data-i18n="contact_email_v">info@callpro.az</a></div>
             </div>
           </div>
-          <div class="contact-info-card">
-            <div class="contact-info-icon">📍</div>
-            <div>
-              <div class="contact-info-title" data-i18n="contact_addr">Ünvan</div>
-              <div class="contact-info-value" data-i18n="contact_addr_v">Bakı, Nərimanov, AZ1000</div>
-            </div>
-          </div>
+          <!-- Address removed per request -->
           <div class="contact-info-card">
             <div class="contact-info-icon">🕐</div>
             <div>
@@ -411,14 +410,17 @@
                 <div class="form-group" style="margin-bottom:20px">
                   <label class="form-label" for="fcalls" data-i18n="form_calls">Aylıq zəng həcmi</label>
                   <div class="form-range-wrap">
-                    <input type="range" class="form-range" id="fcalls" min="100" max="10000" value="1000" step="100"/>
+                    <div class="range-inner-container">
+                      <div class="liquid-progress"></div>
+                      <input type="range" class="form-range" id="fcalls" min="100" max="10000" value="1000" step="100">
+                      <div class="range-tooltip">1000</div>
+                    </div>
                     <div class="form-range-labels">
-                      <span data-i18n="form_calls_l">100</span>
-                      <strong><span id="callsOutput">1,000</span> zəng/ay</strong>
-                      <span data-i18n="form_calls_r">10,000+</span>
+                      <span>100</span>
+                      <strong><span id="callsOutput">1 000</span> zəng/ay</strong>
+                      <span>10 000+</span>
                     </div>
                   </div>
-                </div>
 
                 <div class="form-group" style="margin-bottom:20px">
                   <label class="form-label" for="fmsg" data-i18n="form_msg">Əlavə qeyd</label>
@@ -442,8 +444,7 @@
               </div>
             </div>
 
-            <!-- SUCCESS -->
-            <div class="form-success" id="formSuccess">
+            <div class="form-success" id="formSuccess" style="display:none">
               <div class="form-success__icon">✅</div>
               <h3 data-i18n="form_success_t" style="font-size:1.3rem">Sorğunuz göndərildi!</h3>
               <p style="color:var(--text-secondary)" data-i18n="form_success_d">Ən qısa zamanda sizinlə əlaqə saxlayacağıq.</p>
@@ -472,16 +473,7 @@
       </div>
     </div>
 
-    <!-- Map -->
-    <div class="map-wrap reveal">
-      <div class="map-grid-bg"></div>
-      <div class="map-content">
-        <div class="map-pin">📍</div>
-        <div class="map-wrap-label" data-i18n="contact_map_label">Bizim Ofis</div>
-        <div class="map-address">Bakı, Nərimanov rayonu, Tbilisi pr. 17, AZ1078</div>
-        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="margin-top:12px" data-i18n="contact_map_button">Google Maps-da Aç ↗</a>
-      </div>
-    </div>
+    <!-- Map removed per request -->
   </div>
 </section>
 
@@ -509,7 +501,7 @@
         <div class="footer__col-title" data-i18n="footer_col2">Şirkət</div>
         <ul class="footer__links">
           <li><a href="about.html"   class="footer__link" data-i18n="footer_m1">Haqqımızda</a></li>
-          <li><a href="about.html"   class="footer__link" data-i18n="footer_m2">Komanda</a></li>
+          <li><a href="about.html"   class="footer__link" data-i18n="footer_m2">Müştərilər</a></li>
           <li><a href="#"            class="footer__link" data-i18n="footer_m3">Karyera</a></li>
         </ul>
       </div>
@@ -546,11 +538,10 @@
 <script src="js/app.js"></script>
 <script>
 const panels = document.querySelectorAll('#stepPanels > div');
-const steps = document.querySelectorAll('.form-step');
-let current = 0;
+const steps  = document.querySelectorAll('.form-step');
+let current  = 0;
 
 function goTo(idx) {
-  if (!panels[current] || !panels[idx]) return;
   panels[current].classList.remove('active');
   steps[current].classList.remove('active');
   steps[current].classList.add('done');
@@ -558,33 +549,16 @@ function goTo(idx) {
   panels[current].classList.add('active');
   steps[current].classList.add('active');
   steps[current].classList.remove('done');
-  for (let i = idx + 1; i < steps.length; i++) {
-    steps[i].classList.remove('active', 'done');
-  }
+  for (let i = idx + 1; i < steps.length; i++) steps[i].classList.remove('active', 'done');
   if (window.innerWidth < 768) {
     document.querySelector('.contact-form-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
 function validateStep(panelIdx) {
-  if (panelIdx === 0) {
-    const name = document.getElementById('fname');
-    const phone = document.getElementById('fphone');
-    const email = document.getElementById('femail');
-    let valid = true;
-
-    if (!name || !name.value.trim()) { name?.classList.add('error'); valid = false; } else { name?.classList.remove('error'); }
-    if (!phone || !phone.value.trim()) { phone?.classList.add('error'); valid = false; } else { phone?.classList.remove('error'); }
-    if (!email || !email.value.trim()) { email?.classList.add('error'); valid = false; } else { email?.classList.remove('error'); }
-    
-    return valid;
-  }
-
   const panel = panels[panelIdx];
-  if (!panel) return true;
-  const required = panel.querySelectorAll('[required]');
   let ok = true;
-  required.forEach(f => {
+  panel.querySelectorAll('[required]').forEach(f => {
     if (f.type === 'checkbox') { if (!f.checked) ok = false; }
     else if (!f.value.trim()) { f.classList.add('error'); ok = false; }
     else f.classList.remove('error');
@@ -592,132 +566,106 @@ function validateStep(panelIdx) {
   return ok;
 }
 
-document.getElementById('nextBtn1')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (validateStep(0)) goTo(1);
+document.getElementById('nextBtn1')?.addEventListener('click', () => { if (validateStep(0)) goTo(1); });
+document.getElementById('nextBtn2')?.addEventListener('click', () => goTo(2));
+document.getElementById('prevBtn2')?.addEventListener('click', () => {
+  panels[1].classList.remove('active'); steps[1].classList.remove('active','done'); steps[0].classList.remove('done');
+  current = 0; panels[0].classList.add('active'); steps[0].classList.add('active');
 });
-
-document.getElementById('nextBtn2')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  goTo(2);
-});
-
-document.getElementById('prevBtn2')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  panels[1].classList.remove('active');
-  steps[1].classList.remove('active', 'done');
-  steps[0].classList.remove('done');
-  current = 0;
-  panels[0].classList.add('active');
-  steps[0].classList.add('active');
-});
-
-document.getElementById('prevBtn3')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  panels[2].classList.remove('active');
-  steps[2].classList.remove('active', 'done');
-  steps[1].classList.remove('done');
-  current = 1;
-  panels[1].classList.add('active');
-  steps[1].classList.add('active');
+document.getElementById('prevBtn3')?.addEventListener('click', () => {
+  panels[2].classList.remove('active'); steps[2].classList.remove('active','done'); steps[1].classList.remove('done');
+  current = 1; panels[1].classList.add('active'); steps[1].classList.add('active');
 });
 
 function collectFormData() {
-  const serviceValue = document.querySelector('input[name="service"]:checked')?.value || 'inbound';
-  const serviceLabels = {
-    inbound: window.TRANSLATIONS?.[APP.lang]?.svc_1_title || 'Inbound Calls',
-    outbound: window.TRANSLATIONS?.[APP.lang]?.svc_2_title || 'Outbound Calls',
-    techsupport: window.TRANSLATIONS?.[APP.lang]?.svc_3_title || 'Technical Support',
-    crm: window.TRANSLATIONS?.[APP.lang]?.svc_4_title || 'CRM Integration',
+  const svcVal = document.querySelector('input[name="service"]:checked')?.value || 'inbound';
+  const svcMap = {
+    inbound: window.TRANSLATIONS?.[APP.lang]?.svc_1_title || 'Inbound',
+    outbound: window.TRANSLATIONS?.[APP.lang]?.svc_2_title || 'Outbound',
+    techsupport: window.TRANSLATIONS?.[APP.lang]?.svc_3_title || 'Tech Support',
+    crm: window.TRANSLATIONS?.[APP.lang]?.svc_4_title || 'CRM',
     analytics: window.TRANSLATIONS?.[APP.lang]?.svc_6_title || 'Analytics',
-    full: window.TRANSLATIONS?.[APP.lang]?.svc_full_title || 'Full Solution',
+    full: window.TRANSLATIONS?.[APP.lang]?.svc_full_title || 'Full Package',
   };
   return {
-    name: document.getElementById('fname')?.value.trim() || '',
+    name:    document.getElementById('fname')?.value.trim() || '',
     company: document.getElementById('fcompany')?.value.trim() || '',
-    phone: document.getElementById('fphone')?.value.trim() || '',
-    email: document.getElementById('femail')?.value.trim() || '',
-    service: serviceLabels[serviceValue] || serviceLabels.inbound,
-    calls: document.getElementById('fcalls')?.value || '',
+    phone:   document.getElementById('fphone')?.value.trim() || '',
+    email:   document.getElementById('femail')?.value.trim() || '',
+    service: svcMap[svcVal] || svcMap.inbound,
+    calls:   document.getElementById('fcalls')?.value || '',
     message: document.getElementById('fmsg')?.value.trim() || '',
-    page: window.location.pathname,
-    lang: APP.lang || 'az',
+    lang:    APP.lang,
   };
 }
 
-function buildTelegramText(formData) {
-  const T = window.TRANSLATIONS?.[APP.lang] || window.TRANSLATIONS?.az;
-  const lines = [
-    `<b>${T?.tg_new_request_title || 'Yeni Müraciət'}</b>\n`,
-    `<b>${T?.tg_label_name || 'Ad Soyad'}:</b> ${formData.name}`,
-    `<b>${T?.tg_label_company || 'Şirkət'}:</b> ${formData.company || '-'}`,
-    `<b>${T?.tg_label_phone || 'Telefon'}:</b> ${formData.phone}`,
-    `<b>${T?.tg_label_email || 'E-mail'}:</b> ${formData.email}`,
-    `<b>${T?.tg_label_service || 'Xidmət'}:</b> ${formData.service}`,
-    `<b>${T?.tg_label_calls || 'Aylıq zəng'}:</b> ${formData.calls}`,
-    `<b>${T?.tg_label_message || 'Mesaj'}:</b> ${formData.message || '-'}`,
-    `<b>${T?.tg_label_page || 'Səhifə'}:</b> ${formData.page}`,
-    `<b>${T?.tg_label_language || 'Dil'}:</b> ${formData.lang.toUpperCase()}`,
-  ];
-  return lines.join('\n');
-}
-
-async function trySendTelegram(formData) {
-  const token = '8946449456:AAGbcZMJ5LHPghq6cfgQvxOt-aAXw4mODSU';
-  const chatIds = ['7961240945', '6981587220'];
-  let allOk = true;
-  for (const id of chatIds) {
-    try {
-      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: id, text: buildTelegramText(formData), parse_mode: 'HTML' }),
-      });
-      if (!response.ok) allOk = false;
-    } catch (error) {
-      console.warn('Telegram send error:', error);
-      allOk = false;
-    }
-  }
-  return allOk;
-}
-
-document.getElementById('submitBtn')?.addEventListener('click', async event => {
-  event.preventDefault();
+document.getElementById('submitBtn')?.addEventListener('click', async e => {
+  e.preventDefault();
   if (!validateStep(2)) return;
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
   const formData = collectFormData();
-  const telegramSent = await trySendTelegram(formData);
-  await new Promise(r => setTimeout(r, 1500));
+  await sendToTelegram(formData);
+  await new Promise(r => setTimeout(r, 1400));
   btn.classList.remove('loading');
-  
-  const formBody = document.querySelector('.form-body');
-  if (formBody) formBody.style.display = 'none';
-  
-  const successBlock = document.getElementById('formSuccess');
-  if (successBlock) {
-    successBlock.innerHTML = '<div style="text-align:center; font-size:2.5rem; font-weight:bold; color:#4dd0e1; padding:40px 0;">Success!</div>';
-    successBlock.style.display = 'block';
-    successBlock.classList.add('visible');
-  }
-  
-  if (telegramSent === false) {
-    console.warn('Telegram göndərmə uğursuz oldu');
+  const T = window.TRANSLATIONS?.[APP.lang] || window.TRANSLATIONS?.az || {};
+  const toast = document.getElementById('toast');
+  const toastInner = document.getElementById('toastInner');
+  if (toast && toastInner) {
+    toastInner.textContent = T.form_success_popup || T.form_success_t || 'Göndərildi!';
+    toast.style.display = 'block';
+    toast.style.opacity = '0';
+    setTimeout(() => { toast.style.transition = 'opacity 220ms ease'; toast.style.opacity = '1'; }, 10);
+    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.style.display = 'none', 260); }, 4000);
   }
 });
 
-const callsInput = document.getElementById('fcalls');
+const callsInput  = document.getElementById('fcalls');
 const callsOutput = document.getElementById('callsOutput');
 callsInput?.addEventListener('input', () => {
   const v = parseInt(callsInput.value);
-  if (callsOutput) callsOutput.textContent = v >= 10000 ? '10,000+' : v.toLocaleString();
+  callsOutput.textContent = v >= 10000 ? '10,000+' : v.toLocaleString();
   const pct = (v - 100) / (10000 - 100) * 100;
-  callsInput.style.background = `linear-gradient(to right, var(--accent) ${pct}%, var(--border) ${pct}%)`;
+  callsInput.style.background = `linear-gradient(to right, var(--accent) ${pct}%, var(--border-hover) ${pct}%)`;
 });
-if (callsInput) {
-  callsInput.style.background = `linear-gradient(to right, var(--accent) 9%, var(--border) 9%)`;
+if (callsInput) callsInput.style.background = `linear-gradient(to right, var(--accent) 9%, var(--border-hover) 9%)`;
+const input = document.getElementById('fcalls');
+const progress = document.querySelector('.liquid-progress');
+const tooltip = document.querySelector('.range-tooltip');
+const container = document.querySelector('.range-inner-container');
+
+function update() {
+  const val = input.value;
+  const percentage = (val - input.min) * 100 / (input.max - input.min);
+  
+  progress.style.width = percentage + '%';
+  tooltip.style.left = percentage + '%';
+  tooltip.textContent = val;
+  
+  // Создаем брызги
+  createSplash(percentage * container.offsetWidth / 100);
 }
+
+function createSplash(x) {
+  for (let i = 0; i < 2; i++) {
+    const s = document.createElement('div');
+    s.className = 'splash';
+    s.style.left = x + 'px';
+    s.style.top = '50%';
+    s.style.width = s.style.height = Math.random() * 6 + 2 + 'px';
+    const dx = (Math.random() - 0.5) * 100 + 'px';
+    const dy = (Math.random() * -80 - 20) + 'px';
+    s.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1 },
+      { transform: `translate(${dx},${dy}) scale(0)`, opacity: 0 }
+    ], { duration: 600, easing: 'ease-out' });
+    container.appendChild(s);
+    setTimeout(() => s.remove(), 600);
+  }
+}
+
+input.addEventListener('input', update);
+update(); // Инициализация
 </script>
 </body>
 </html>
