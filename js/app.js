@@ -417,3 +417,26 @@ function initPageAnimations() {
 
   initCounters();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const html = document.documentElement;
+  
+  // Функция смены
+  const toggleTheme = () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
+
+  // Навешиваем событие на ВСЕ кнопки с классом theme-toggle
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.onclick = toggleTheme; // Используем onclick для надежности
+  });
+
+  // Применяем сохраненную тему сразу
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    html.setAttribute('data-theme', saved);
+  }
+});

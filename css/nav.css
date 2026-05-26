@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  margin-top: 12px;
 }
 
 /* Logo */
@@ -71,6 +72,7 @@
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
+  color: white !important; 
 }
 
 .nav__logo-text span {
@@ -145,7 +147,7 @@
   backdrop-filter: blur(12px);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: white !important;
   transition: all var(--dur-fast) var(--ease);
   font-family: var(--font-body);
 }

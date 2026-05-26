@@ -293,3 +293,19 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); font-weight: 700; line-hei
   .section-header { margin-bottom: 40px; }
   .container { padding: 0 16px; }
 }
+
+/* Значения по умолчанию (обычно темная тема) */
+:root, [data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-card: #151515;
+  --text-primary: #ffffff;
+  /* остальные ваши переменные */
+}
+
+/* Переопределение для светлой темы */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-card: #f5f5f5;
+  --text-primary: #0a0a0a;
+  /* остальные ваши переменные в светлых тонах */
+}

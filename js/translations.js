@@ -5,6 +5,7 @@
 window.TRANSLATIONS = {
 
   az: {
+    form_calls_unit: 'zəng / ay',
     // Nav
     nav_home:       'Ana Səhifə',
     nav_services:   'Xidmətlər',
@@ -21,7 +22,7 @@ window.TRANSLATIONS = {
     hero_desc:      'Müştərilərinizlə peşəkar ünsiyyət qurun. 7/24 aktiv kol mərkəzi xidmətlərimizlə satışlarınızı artırın, müştəri məmnuniyyətini yüksəldin.',
     hero_btn_main:  'Pulsuz Sınaq Başlat',
     hero_btn_sec:   'Xidmətlərə Bax',
-    hero_stat_1:    '98%',
+    hero_stat_1:    '96%',
     hero_stat_1l:   'Məmnuniyyət',
     hero_stat_2:    '50+',
     hero_stat_2l:   'Müştəri',
@@ -140,7 +141,7 @@ window.TRANSLATIONS = {
 
     // Stats
     stats_1: '50+', stats_1l: 'Aktiv Müştəri',
-    stats_2: '98%',  stats_2l: 'Məmnuniyyət Faizi',
+    stats_2: '96%',  stats_2l: 'Məmnuniyyət Faizi',
     stats_3: '100+ min', stats_3l: 'Aylıq Zənglər',
     stats_4: '8 san',stats_4l: 'Ortalama Cavab',
 
@@ -376,7 +377,7 @@ window.TRANSLATIONS = {
     hero_title_1:'Accelerate', hero_title_2:'Your', hero_title_3:'Business',
     hero_desc:'Communicate professionally with your customers. Increase sales and boost satisfaction with our 24/7 call center services.',
     hero_btn_main:'Start Free Trial', hero_btn_sec:'View Services',
-    hero_stat_1:'98%', hero_stat_1l:'Satisfaction', hero_stat_2:'50+', hero_stat_2l:'Clients', hero_stat_3:'24/7', hero_stat_3l:'Active Support',
+    hero_stat_1:'96%', hero_stat_1l:'Satisfaction', hero_stat_2:'50+', hero_stat_2l:'Clients', hero_stat_3:'24/7', hero_stat_3l:'Active Support',
     hero_card1_lbl:'Calls resolved today', hero_card1_val:'1,247', hero_card1_sub:'+12% increase',
     hero_card2_lbl:'Average response time', hero_card2_val:'8 sec', hero_card2_sub:'Industry avg: 45 sec',
     hero_phone_name:'Call Agent — Leyla', hero_phone_stat:'Online',
@@ -423,7 +424,7 @@ window.TRANSLATIONS = {
     why_f3_t:'Real-Time Monitoring', why_f3_d:'Monitor every call live, get instant access to reports.',
     why_f4_t:'GDPR Compliance', why_f4_d:'All data protected according to international privacy standards.',
     why_dash_calls:'Today\'s Calls', why_dash_sat:'Satisfaction', why_dash_perf:'Performance',
-    stats_1:'50+', stats_1l:'Active Clients', stats_2:'98%', stats_2l:'Satisfaction Rate', stats_3:'100+K', stats_3l:'Monthly Calls', stats_4:'8 sec', stats_4l:'Average Response',
+    stats_1:'50+', stats_1l:'Active Clients', stats_2:'96%', stats_2l:'Satisfaction Rate', stats_3:'100+K', stats_3l:'Monthly Calls', stats_4:'8 sec', stats_4l:'Average Response',
     proc_label:'How We Work', proc_title:'Starting Is Easy', proc_desc:'Join our call center in 4 simple steps.',
     proc_1_t:'Consultation', proc_1_d:'Contact us. We identify your needs together.',
     proc_2_t:'Configuration', proc_2_d:'We prepare custom scripts and procedures for you.',
@@ -495,15 +496,16 @@ window.TRANSLATIONS = {
     footer_copy:'© 2025 CallPro AZ. All rights reserved.', page_title:'CallPro AZ — Professional Call Center Services', page_description:'CallPro AZ is Azerbaijan’s leading call center with 24/7 customer service, sales support, and technical assistance.', page_title_services:'Services — CallPro AZ', page_description_services:'CallPro AZ services — inbound calls, outbound calls, technical support, CRM integration, analytics.', page_title_contact:'Contact — CallPro AZ', page_description_contact:'Contact CallPro AZ — send a request, get a consultation, talk to us.', page_title_about:'About — CallPro AZ', page_description_about:'Learn about CallPro AZ — a leading Azerbaijani call center since 2019. Our mission, vision, values.', footer_priv:'Privacy', footer_terms:'Terms', footer_cookies:'Cookies',
     cookie_text:'Our site uses cookies to improve your experience.', cookie_accept:'Accept', cookie_decline:'Decline',
     scroll_top:'Back to top',
-  },
+    form_calls_unit: 'calls / month'  },
 
   ru: {
+    form_calls_unit: 'звонков/мес',
     nav_home:'Главная', nav_services:'Услуги', nav_about:'О нас', nav_pricing:'Цены', nav_contact:'Контакты', nav_cta:'Бесплатная консультация',
     hero_badge:'Колл-центр №1 в Азербайджане',
     hero_title_1:'Развивайте', hero_title_2:'Свой', hero_title_3:'Бизнес',
     hero_desc:'Общайтесь с клиентами профессионально. Увеличивайте продажи и повышайте удовлетворённость с нашими услугами колл-центра 24/7.',
     hero_btn_main:'Начать бесплатно', hero_btn_sec:'Смотреть услуги',
-    hero_stat_1:'98%', hero_stat_1l:'Удовлетворённость', hero_stat_2:'50+', hero_stat_2l:'Клиентов', hero_stat_3:'24/7', hero_stat_3l:'Поддержка',
+    hero_stat_1:'96%', hero_stat_1l:'Удовлетворённость', hero_stat_2:'50+', hero_stat_2l:'Клиентов', hero_stat_3:'24/7', hero_stat_3l:'Поддержка',
     hero_card1_lbl:'Звонков решено сегодня', hero_card1_val:'1 247', hero_card1_sub:'+12% рост',
     hero_card2_lbl:'Среднее время ответа', hero_card2_val:'8 сек', hero_card2_sub:'Средний по рынку: 45 сек',
     hero_phone_name:'Оператор — Лейла', hero_phone_stat:'Онлайн',
@@ -550,7 +552,7 @@ window.TRANSLATIONS = {
     why_f3_t:'Мониторинг в реальном времени', why_f3_d:'Отслеживайте каждый звонок вживую, получайте мгновенный доступ к отчётам.',
     why_f4_t:'Соответствие GDPR', why_f4_d:'Все данные защищены по международным стандартам конфиденциальности.',
     why_dash_calls:'Звонков сегодня', why_dash_sat:'Удовлетворённость', why_dash_perf:'Производительность',
-    stats_1:'50+', stats_1l:'Активных клиентов', stats_2:'98%', stats_2l:'Уровень удовлетворённости', stats_3:'100+ тыс', stats_3l:'Звонков в месяц', stats_4:'8 сек', stats_4l:'Среднее время ответа',
+    stats_1:'50+', stats_1l:'Активных клиентов', stats_2:'96%', stats_2l:'Уровень удовлетворённости', stats_3:'100+ тыс', stats_3l:'Звонков в месяц', stats_4:'8 сек', stats_4l:'Среднее время ответа',
     proc_label:'Как мы работаем', proc_title:'Начать просто', proc_desc:'Подключитесь к нашему колл-центру за 4 шага.',
     proc_1_t:'Консультация', proc_1_d:'Свяжитесь с нами. Определим ваши потребности вместе.',
     proc_2_t:'Настройка', proc_2_d:'Готовим специальные скрипты и процедуры для вас.',
@@ -622,5 +624,6 @@ window.TRANSLATIONS = {
     footer_copy:'© 2025 CallPro AZ. Все права защищены.', page_title:'CallPro AZ — Профессиональный колл-центр', page_description:'CallPro AZ — ведущий колл-центр Азербайджана. Поддержка клиентов и продажи 24/7, техническая помощь.', page_title_services:'Услуги — CallPro AZ', page_description_services:'Услуги CallPro AZ — входящие звонки, исходящие звонки, техническая поддержка, интеграция CRM, аналитика.', page_title_contact:'Контакты — CallPro AZ', page_description_contact:'Свяжитесь с CallPro AZ — отправьте заявку, получите консультацию, поговорите с нами.', page_title_about:'О нас — CallPro AZ', page_description_about:'Узнайте о CallPro AZ — ведущем колл-центре Азербайджана с 2019 года. Наша миссия, видение, ценности.', footer_priv:'Политика', footer_terms:'Условия', footer_cookies:'Куки',
     cookie_text:'Наш сайт использует куки для улучшения вашего опыта.', cookie_accept:'Принять', cookie_decline:'Отказать',
     scroll_top:'Наверх',
+    
   },
 };
