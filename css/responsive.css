@@ -133,7 +133,7 @@ body { overflow-x: hidden; }
   }
   .hero__desc   { margin: 0 auto 32px; max-width: 560px; }
   .hero__actions { justify-content: center; }
-  .hero__stats  { max-width: 420px; margin: 40px auto 0; }
+  .hero__stats  {  margin: 40px auto 0; }
   .hero__visual { display: none; }
 
   /* Grids */

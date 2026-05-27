@@ -114,7 +114,7 @@
 
 .nav__link:hover,
 .nav__link.active {
-  color: #fff;
+  color: var(--text-primary);
   background: rgba(255,255,255,0.05);
 }
 
@@ -186,31 +186,6 @@
   opacity: 1;
   transform: none;
   pointer-events: all;
-}
-
-.lang-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--dur-fast);
-  width: 100%;
-  text-align: left;
-}
-
-.lang-option:hover {
-  background: var(--border);
-  color: var(--text-primary);
-}
-
-.lang-option.active {
-  color: var(--accent);
-  background: rgba(0,212,255,0.08);
 }
 
 .lang-flag { font-size: 1.1rem; }
@@ -367,4 +342,36 @@
 
 @media (max-width: 480px) {
   .nav__logo-text { display: none; }
+}/* Hide nav controls everywhere and remove glow effects */
+.nav__controls,
+.nav__mobile-controls {
+  display: none !important;
+}
+
+.cursor-glow,
+.svc-detail__glow,
+.hero__orb,
+.hero__scroll,
+.hero__float-card::before {
+  display: none !important;
+}
+
+.nav,
+.nav__logo-mark,
+.lang-btn,
+.theme-toggle,
+.nav__hamburger,
+.nav__mobile-link,
+.card,
+.service-card,
+.pricing-card,
+.hero__phone,
+.hero__phone-screen,
+.hero__float-card,
+.btn-primary,
+.btn-ghost {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
 }

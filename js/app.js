@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initCounters();
   initFAQ();
-  initCursorGlow();
+  //  initCursorGlow();
   initCookies();
   initScrollTop();
   initLoadingScreen();
@@ -89,9 +89,18 @@ function initLang() {
       if (!e.target.closest('.lang-selector')) {
           document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
           document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
-          console.log('Click detected')
       }
   });
+}
+function syncLangSelectorUI(lang) {
+  document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+  document.querySelectorAll('.lang-btn .lang-current').forEach(el => el.textContent = lang.toUpperCase());
+}
+
+function closeLangDropdowns() {
+  document.querySelectorAll('.lang-selector').forEach(s => s.classList.remove('open'));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
 }
 
 function applyLang(lang) {
@@ -234,26 +243,26 @@ function initFAQ() {
 }
 
 // ─── Cursor Glow ──────────────────────────────────────────────
-function initCursorGlow() {
-  const glow = document.querySelector('.cursor-glow');
-  if (!glow) return;
+//function initCursorGlow() {
+ // const glow = document.querySelector('.cursor-glow');
+  //if (!glow) return;
 
-  let mx = 0, my = 0, cx = 0, cy = 0;
+  //let mx = 0, my = 0, cx = 0, cy = 0;
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX;
-    my = e.clientY;
-  });
+ // document.addEventListener('mousemove', e => {
+ //   mx = e.clientX;
+   // my = e.clientY;
+  //});
 
-  function raf() {
-    cx += (mx - cx) * 0.08;
-    cy += (my - cy) * 0.08;
-    glow.style.left = cx + 'px';
-    glow.style.top  = cy + 'px';
-    requestAnimationFrame(raf);
-  }
-  raf();
-}
+//function raf() {
+    //cx += (mx - cx) * 0.08;
+    //cy += (my - cy) * 0.08;
+    //glow.style.left = cx + 'px';
+    //glow.style.top  = cy + 'px';
+    //requestAnimationFrame(raf);
+  //}
+  //raf();
+//}
 
 // ─── Cookies Banner ───────────────────────────────────────────
 function initCookies() {

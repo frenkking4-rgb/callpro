@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <link rel="stylesheet" href="css/variables.css"/>
   <link rel="stylesheet" href="css/nav.css"/>
@@ -30,7 +30,7 @@
   </div>
 </div>
 
-<div class="cursor-glow"></div>
+<!-- <div class="cursor-glow"></div> -->
 
 <nav class="nav" id="mainNav">
   <div class="container">
@@ -47,15 +47,15 @@
       </ul>
       <div class="nav__controls">
         <div class="lang-selector">
-          <button class="lang-btn" aria-label="Select language">
+          <button type="button" class="lang-btn" aria-label="Select language">
             <span class="lang-flag">🌐</span>
             <span class="lang-current">AZ</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="lang-dropdown">
-            <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
-            <button class="lang-option"        data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
-            <button class="lang-option"        data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+            <button type="button" class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+            <button type="button" class="lang-option"        data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+            <button type="button" class="lang-option"        data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
           </div>
         </div>
         <button class="theme-toggle" aria-label="Toggle theme">
@@ -77,11 +77,11 @@
   <a href="contact.html"  class="nav__mobile-link" data-i18n="nav_contact">Əlaqə <span>→</span></a>
   <div class="nav__mobile-controls">
     <div class="lang-selector">
-      <button class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button type="button" class="lang-btn"><span class="lang-flag">🌐</span><span class="lang-current">AZ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
       <div class="lang-dropdown">
-        <button class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
-        <button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
-        <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+        <button type="button" class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
+        <button type="button" class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+        <button type="button" class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
       </div>
     </div>
     <button class="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/></svg></button>
