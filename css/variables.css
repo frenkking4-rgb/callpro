@@ -2,6 +2,9 @@
    VARIABLES & BASE — CallPro AZ
    ============================================================ */
 
+
+
+   
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans:wght@300;400;600;700&display=swap');
 
 :root {
@@ -64,6 +67,8 @@
   --nav-bg:        rgba(7,11,21,0.92);
 }
 
+
+
 /* ============================================================
    RESET & BASE
    ============================================================ */
@@ -80,6 +85,9 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative; /* Помогает зафиксировать систему координат */
   background-image:
     radial-gradient(circle at 20% 10%, rgba(0,212,255,0.10), transparent 22%),
     radial-gradient(circle at 80% 20%, rgba(123,47,255,0.08), transparent 18%);

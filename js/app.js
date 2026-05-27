@@ -57,9 +57,15 @@ function initLang() {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
-      const dropdown = btn.nextElementSibling;
-      btn.classList.toggle('open');
-      dropdown.classList.toggle('open');
+      
+      // Ищем dropdown внутри того же родителя, где находится кнопка
+      const parent = btn.closest('.lang-selector');
+      const dropdown = parent.querySelector('.lang-dropdown');
+      
+      if (dropdown) {
+        btn.classList.toggle('open');
+        dropdown.classList.toggle('open');
+      }
     });
   });
 
@@ -69,20 +75,22 @@ function initLang() {
       APP.lang = lang;
       localStorage.setItem('cp_lang', lang);
       applyLang(lang);
-      // Update active states
+      
       document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
-      // Update button text
       document.querySelectorAll('.lang-btn .lang-current').forEach(el => el.textContent = lang.toUpperCase());
-      // Close dropdowns
+      
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
       document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
     });
   });
 
-  // Close on outside click
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
-    document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
+  document.addEventListener('click', (e) => {
+      // Если клик был не по кнопке и не по самому меню, закрываем
+      if (!e.target.closest('.lang-selector')) {
+          document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
+          document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
+          console.log('Click detected')
+      }
   });
 }
 

@@ -10,6 +10,13 @@
   overflow: hidden;
   background: linear-gradient(180deg, rgba(7,11,21,1) 0%, rgba(12,18,34,0.98) 100%);
   padding-top: var(--nav-h);
+  overflow-x: hidden;
+}
+
+/* Принудительно ограничиваем ширину всех блоков */
+.hero, .hero_content, .container {
+    max-width: 100vw !important;
+    overflow: hidden !important;
 }
 
 .hero__bg {
@@ -119,7 +126,8 @@
   text-shadow: 0 22px 45px rgba(0,0,0,0.18);
 }
 
-.hero__title .line { display: block; overflow: hidden; }
+.hero__title .line { display: block; overflow: hidden;  font-size: clamp(2.4rem, 16.5vw, 6.5rem);
+  line-height: 1.5; font-weight: inherit; letter-spacing: inherit;  color: inherit; }
 .hero__title .line span {
   display: block;
   transform: translateY(100%);
