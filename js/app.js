@@ -6,14 +6,13 @@
 
 // ─── State ────────────────────────────────────────────────────
 const APP = {
-  lang:  localStorage.getItem('cp_lang')  || 'az',
-  theme: localStorage.getItem('cp_theme') || 'dark',
+  lang: localStorage.getItem('cp_lang') || 'az',
 };
 
 // ─── DOM Ready ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
   initLang();
+  initDailyValue();
   initNav();
   initScrollReveal();
   initCounters();
@@ -34,73 +33,57 @@ function initLoadingScreen() {
   setTimeout(() => screen.classList.add('done'), 2000);
 }
 
-// ─── Theme ────────────────────────────────────────────────────
-function initTheme() {
-  applyTheme(APP.theme);
-  document.querySelectorAll('.theme-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      APP.theme = APP.theme === 'dark' ? 'light' : 'dark';
-      applyTheme(APP.theme);
-      localStorage.setItem('cp_theme', APP.theme);
-    });
-  });
-}
-
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-}
-
+// Theme removed: site uses default `data-theme="dark"` on HTML
 // ─── Language ─────────────────────────────────────────────────
 function initLang() {
   applyLang(APP.lang);
 
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      
-      // Ищем dropdown внутри того же родителя, где находится кнопка
-      const parent = btn.closest('.lang-selector');
-      const dropdown = parent.querySelector('.lang-dropdown');
-      
-      if (dropdown) {
-        btn.classList.toggle('open');
-        dropdown.classList.toggle('open');
-      }
-    });
-  });
+  const sel = document.getElementById('langSelect');
+  const selMobile = document.getElementById('langSelectMobile');
 
-  document.querySelectorAll('.lang-option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      const lang = opt.dataset.lang;
+  [sel, selMobile].forEach(s => {
+    if (!s) return;
+    s.value = APP.lang;
+    s.addEventListener('change', () => {
+      const lang = s.value;
       APP.lang = lang;
       localStorage.setItem('cp_lang', lang);
       applyLang(lang);
-      
-      document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
-      document.querySelectorAll('.lang-btn .lang-current').forEach(el => el.textContent = lang.toUpperCase());
-      
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
-      document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
+      initDailyValue();
+      if (sel && sel !== s) sel.value = lang;
+      if (selMobile && selMobile !== s) selMobile.value = lang;
     });
   });
-
-  document.addEventListener('click', (e) => {
-      // Если клик был не по кнопке и не по самому меню, закрываем
-      if (!e.target.closest('.lang-selector')) {
-          document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
-          document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
-      }
-  });
-}
-function syncLangSelectorUI(lang) {
-  document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
-  document.querySelectorAll('.lang-btn .lang-current').forEach(el => el.textContent = lang.toUpperCase());
 }
 
-function closeLangDropdowns() {
-  document.querySelectorAll('.lang-selector').forEach(s => s.classList.remove('open'));
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('open'));
-  document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('open'));
+// ─── Daily Value (calls today) ─────────────────────────────────
+let DAILY_VALUE = null;
+async function fetchDailyValue() {
+  try {
+    const res = await fetch('js/daily_value.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('Failed to fetch');
+    const j = await res.json();
+    DAILY_VALUE = j;
+    return j;
+  } catch (err) {
+    return null;
+  }
+}
+
+function updateDailyValueDisplay(data) {
+  const val = data && typeof data.value === 'number' ? data.value : null;
+  if (val === null) return;
+  const locale = APP.lang === 'ru' ? 'ru-RU' : APP.lang === 'en' ? 'en-US' : 'az-Latn-AZ';
+  const formatted = new Intl.NumberFormat(locale).format(val);
+  const elHero = document.getElementById('callsTodayHero');
+  if (elHero) elHero.textContent = formatted;
+  const elDash = document.getElementById('callsTodayDash');
+  if (elDash) elDash.textContent = formatted;
+}
+
+async function initDailyValue() {
+  const data = await fetchDailyValue();
+  if (data) updateDailyValueDisplay(data);
 }
 
 function applyLang(lang) {
@@ -435,25 +418,4 @@ function initPageAnimations() {
   initCounters();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const html = document.documentElement;
-  
-  // Функция смены
-  const toggleTheme = () => {
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  };
-
-  // Навешиваем событие на ВСЕ кнопки с классом theme-toggle
-  document.querySelectorAll('.theme-toggle').forEach(btn => {
-    btn.onclick = toggleTheme; // Используем onclick для надежности
-  });
-
-  // Применяем сохраненную тему сразу
-  const saved = localStorage.getItem('theme');
-  if (saved) {
-    html.setAttribute('data-theme', saved);
-  }
-});
+// Theme toggle removed; site uses default HTML `data-theme` value.

@@ -16,25 +16,12 @@
       </ul>
 
       <div class="nav__controls">
-
-        <div class="lang-selector"> <!-- .lang-selector . -->
-          <button type="button" class="lang-btn" aria-label="Select language">
-            <span class="lang-flag">🌐</span>
-            <span class="lang-current">AZ</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="lang-dropdown">
-            <button type="button" class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
-            <button type="button" class="lang-option"        data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
-            <button type="button" class="lang-option"        data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
-          </div>
-        </div>
-
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-
+        <label for="langSelect" class="sr-only">Language</label>
+        <select id="langSelect" class="lang-select">
+          <option value="az">Azərbaycanca (AZ)</option>
+          <option value="en">English (EN)</option>
+          <option value="ru">Русский (RU)</option>
+        </select>
         <a href="contact.html" class="btn btn-primary btn-sm nav__cta" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
       </div>
 
@@ -54,22 +41,12 @@
   <!-- pricing mobile link removed -->
   <a href="contact.html"  class="nav__mobile-link" data-i18n="nav_contact">Əlaqə <span>→</span></a>
   <div class="nav__mobile-controls">
-    <div class="lang-selector">
-      <button type="button" class="lang-btn" aria-label="Select language">
-        <span class="lang-flag">🌐</span>
-        <span class="lang-current">AZ</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="lang-dropdown">
-        <button type="button" class="lang-option active" data-lang="az"><span class="lang-flag">🇦🇿</span> Azərbaycanca</button>
-        <button type="button" class="lang-option"        data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
-        <button type="button" class="lang-option"        data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
-      </div>
-    </div>
-    <button class="theme-toggle" aria-label="Toggle theme">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-      <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
+    <label for="langSelectMobile" class="sr-only">Language</label>
+    <select id="langSelectMobile" class="lang-select">
+      <option value="az">Azərbaycanca (AZ)</option>
+      <option value="en">English (EN)</option>
+      <option value="ru">Русский (RU)</option>
+    </select>
     <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center" data-i18n="nav_cta">Pulsuz Konsultasiya</a>
   </div>
 </div>
