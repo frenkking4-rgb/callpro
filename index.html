@@ -97,7 +97,7 @@
     <div class="hero__layout">
 
       <div>
-        <div class="hero__badge">
+        <div class="hero__badge" id="heroBadge"> 
           <span class="hero__badge-dot"></span>
           <span class="hero__badge-text" data-i18n="hero_badge">Azərbaycanın №1 Kol Mərkəzi</span>
         </div>
@@ -511,5 +511,24 @@
 
 <script src="js/translations.js"></script>
 <script src="js/app.js"></script>
+<script src="js/three.r134.min.js"></script>
+<script src="js/vanta.fog.min.js"></script>
+<script>
+VANTA.FOG({
+  el: ".hero__bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  highlightColor: 0x0,
+  midtoneColor: 0xff,
+  lowlightColor: 0xff,
+  baseColor: 0x0,
+  blurFactor: 0.90,
+  speed: 1.20,
+  zoom: 0.90
+})
+</script>
 </body>
 </html>
